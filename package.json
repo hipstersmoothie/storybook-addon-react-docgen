@@ -93,7 +93,6 @@
     ]
   },
   "dependencies": {
-    "@emotion/styled": "^10.0.0-beta.13",
     "@storybook/addons": "^4.0.8",
     "@storybook/components": "^4.0.8",
     "nested-object-assign": "^1.0.3",
