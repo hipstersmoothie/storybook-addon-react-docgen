@@ -15,6 +15,10 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hipstersmoothie/storybook-addon-react-docgen"
+  },
   "scripts": {
     "lint": "xo",
     "build": "babel src -d dist",
@@ -102,5 +106,12 @@
     "minorLabel": "Version: Minor",
     "patchLabel": "Version: Patch",
     "internalLabel": "No version: Internal"
-  }
+  },
+  "keywords": [
+    "storybook",
+    "addon",
+    "react",
+    "docgen",
+    "typescript"
+  ]
 }
