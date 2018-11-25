@@ -82,6 +82,10 @@ const stylesheetBase = {
 };
 
 class Story extends Component {
+  state = {
+    stylesheet: this.props.styles(stylesheetBase)
+  };
+
   _renderInline() {
     const { stylesheet } = this.state;
 
@@ -142,17 +146,13 @@ class Story extends Component {
   }
 }
 
-Story.getDerivedStateFromProps = ({ styles }) => ({
-  stylesheet: styles(stylesheetBase)
-});
-
 Story.displayName = 'Story';
 
 Story.propTypes = {
   propTables: PropTypes.arrayOf(PropTypes.func),
   // eslint-disable-next-line react/no-unused-prop-types
   styles: PropTypes.func.isRequired,
-  components: PropTypes.node.isRequired,
+  components: PropTypes.array.isRequired,
   maxPropObjectKeys: PropTypes.number.isRequired,
   maxPropArrayLength: PropTypes.number.isRequired,
   maxPropStringLength: PropTypes.number.isRequired,
