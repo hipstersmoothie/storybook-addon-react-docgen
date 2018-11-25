@@ -2,6 +2,8 @@
 
 A storybook addon to display react docgen info.
 
+![Example Output](./example.png)
+
 ## Installation
 
 ```sh

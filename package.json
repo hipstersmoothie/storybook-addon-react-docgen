@@ -1,13 +1,17 @@
 {
   "name": "storybook-addon-react-docgen",
   "version": "0.0.0",
-  "description": "storybook-addon-react-docgen",
+  "description": "A storybook addon to display react docgen info.",
   "main": "dist/index.js",
   "source": "index.js",
   "author": {
     "name": "Andrew Lisowski",
     "email": "lisowski54@gmail.com"
   },
+  "files": [
+    "dist",
+    "register.js"
+  ],
   "scripts": {
     "test": "jest",
     "lint": "xo",
