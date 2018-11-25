@@ -2,7 +2,7 @@
 
 A storybook addon to display react docgen info.
 
-![Example Output](./example.png)
+![Example Output](https://github.com/hipstersmoothie/storybook-addon-react-docgen/raw/master/example.png)
 
 ## Installation
 
