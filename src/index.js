@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom/server';
 import nestedObjectAssign from 'nested-object-assign';
 import addons, { makeDecorator } from '@storybook/addons';
 
@@ -49,7 +50,6 @@ function addPropsTable(storyFn, context, infoOptions) {
     maxPropStringLength: options.maxPropStringLength,
     excludedPropTypes: options.excludedPropTypes
   };
-  // return () => <Story {...props}>{storyFn(context)}</Story>;
 }
 
 export const withPropsTable = makeDecorator({
@@ -67,10 +67,13 @@ export const withPropsTable = makeDecorator({
         : { ...options, ...propsTableOptions };
 
     const res = addPropsTable(getStory(context), context, mergedOptions);
-    console.log({ res });
-    channel.emit('storybook/PropsTable/add_PropsTable', 'res');
 
-    return <Story {...res}>{getStory(context)}</Story>;
+    channel.emit(
+      'storybook/PropsTable/add_PropsTable',
+      ReactDOM.renderToString(<Story {...res}>{getStory(context)}</Story>)
+    );
+
+    return getStory(context);
   }
 });
 

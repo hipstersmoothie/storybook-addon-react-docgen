@@ -1,10 +1,53 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { Table, Td, Th } from '@storybook/components';
-
 import PropVal from './PropVal';
 import PrettyPropType from './types/PrettyPropType';
+
+const cell = {
+  paddingRight: 20,
+  paddingTop: 15,
+  paddingBottom: 15,
+  verticalAlign: 'top',
+  border: 'none'
+};
+
+const styles = {
+  table: {
+    width: '100%',
+    padding: '2rem 0'
+  },
+  header: {
+    paddingRight: 20,
+    paddingBottom: 10,
+    textAlign: 'left',
+    fontWeight: 'bold',
+    fontSize: 14,
+    whiteSpace: 'nowrap',
+    border: 'none',
+    borderBottom: '1px solid #ccc'
+  },
+
+  property: {
+    ...cell,
+    color: '#c62828'
+  },
+  propType: {
+    ...cell,
+    maxWidth: '150px',
+    overflow: 'scroll',
+    color: '#2e7d32'
+  },
+  required: {
+    ...cell
+  },
+  defaultValue: {
+    ...cell
+  },
+  description: {
+    ...cell
+  }
+};
 
 export const multiLineText = input => {
   if (!input) {
@@ -65,38 +108,36 @@ export default function PropTable(props) {
   };
 
   return (
-    <Table>
+    <table style={styles.table}>
       <thead>
         <tr>
-          <Th bordered>property</Th>
-          <Th bordered>propType</Th>
-          <Th bordered>required</Th>
-          <Th bordered>default</Th>
-          <Th bordered>description</Th>
+          <th style={styles.header}>property</th>
+          <th style={styles.header}>propType</th>
+          <th style={styles.header}>required</th>
+          <th style={styles.header}>default</th>
+          <th style={styles.header}>description</th>
         </tr>
       </thead>
       <tbody>
         {includedPropDefinitions.map(row => (
           <tr key={row.property}>
-            <Td bordered code>
-              {row.property}
-            </Td>
-            <Td bordered code>
+            <td style={styles.property}>{row.property}</td>
+            <td style={styles.propType}>
               <PrettyPropType propType={row.propType} />
-            </Td>
-            <Td bordered>{row.required ? 'yes' : '-'}</Td>
-            <Td bordered>
+            </td>
+            <td style={styles.required}>{row.required ? 'yes' : '-'}</td>
+            <td style={styles.defaultValue}>
               {row.defaultValue === undefined ? (
                 '-'
               ) : (
                 <PropVal val={row.defaultValue} {...propValProps} />
               )}
-            </Td>
-            <Td bordered>{multiLineText(row.description)}</Td>
+            </td>
+            <td style={styles.description}>{multiLineText(row.description)}</td>
           </tr>
         ))}
       </tbody>
-    </Table>
+    </table>
   );
 }
 

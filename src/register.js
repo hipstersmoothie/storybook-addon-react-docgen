@@ -1,27 +1,9 @@
 import React from 'react';
-import nestedObjectAssign from 'nested-object-assign';
 import PropTypes from 'prop-types';
 import addons from '@storybook/addons';
 
-import PropTable from './Components/PropTable';
-import makeTableComponent from './Components/makeTableComponent';
-import Story from './Components/Story';
-
-const defaultOptions = {
-  propTables: [],
-  TableComponent: PropTable,
-  maxPropsIntoLine: 3,
-  maxPropObjectKeys: 3,
-  maxPropArrayLength: 3,
-  maxPropStringLength: 50
-};
 export class PropsTable extends React.Component {
-  constructor(...args) {
-    super(...args);
-    console.log('props table');
-    this.state = { text: '' };
-    this.onAddPropsTable = this.onAddPropsTable.bind(this);
-  }
+  state = { text: '' };
 
   componentDidMount() {
     const { channel, api } = this.props;
@@ -48,22 +30,20 @@ export class PropsTable extends React.Component {
     );
   }
 
-  onAddPropsTable(text) {
+  onAddPropsTable = text => {
     this.setState({ text });
-  }
+  };
 
   render() {
     const { active } = this.props;
     const { text } = this.state;
 
-    console.log({ text });
     return active ? (
       <div
+        dangerouslySetInnerHTML={{ __html: text }}
         style={{ padding: 10, boxSizing: 'border-box', width: '100%' }}
         className="addon-PropsTable-container"
-      >
-        {text && text}
-      </div>
+      />
     ) : null;
   }
 }
@@ -84,7 +64,7 @@ PropsTable.propTypes = {
 
 addons.register('storybook/props', api => {
   const channel = addons.getChannel();
-  console.log('here');
+
   addons.addPanel('storybook/props/panel', {
     title: 'Props',
     // eslint-disable-next-line react/prop-types

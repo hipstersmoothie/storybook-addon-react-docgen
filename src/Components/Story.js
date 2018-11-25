@@ -20,7 +20,7 @@ export const getProps = (propTables, propTablesExclude, children) => {
     });
   }
 
-  // depth-first traverse and collect types
+  // Depth-first traverse and collect types
   const extract = innerChildren => {
     if (!innerChildren) {
       return;
@@ -45,10 +45,9 @@ export const getProps = (propTables, propTablesExclude, children) => {
     }
   };
 
-  // extract components from children
+  // Extract components from children
   extract(children);
 
-  console.log({ types });
   const array = [...types.keys()];
   array.sort((a, b) => getName(a) > getName(b));
 
@@ -97,9 +96,7 @@ class Story extends Component {
 
   _getPropTables() {
     const {
-      children,
       components,
-      propTablesExclude,
       maxPropObjectKeys,
       maxPropArrayLength,
       maxPropStringLength,
@@ -111,10 +108,6 @@ class Story extends Component {
     if (propTables === null) {
       return null;
     }
-
-    console.log(this.props);
-
-    // const array = getProps(propTables, propTablesExclude, children);
 
     propTables = components.map((type, i) => (
       // eslint-disable-next-line react/no-array-index-key
@@ -155,10 +148,8 @@ Story.displayName = 'Story';
 
 Story.propTypes = {
   propTables: PropTypes.arrayOf(PropTypes.func),
-  propTablesExclude: PropTypes.arrayOf(PropTypes.func),
   // eslint-disable-next-line react/no-unused-prop-types
   styles: PropTypes.func.isRequired,
-  children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   maxPropObjectKeys: PropTypes.number.isRequired,
   maxPropArrayLength: PropTypes.number.isRequired,
   maxPropStringLength: PropTypes.number.isRequired,
@@ -166,10 +157,7 @@ Story.propTypes = {
 };
 
 Story.defaultProps = {
-  context: null,
-  children: null,
   propTables: null,
-  propTablesExclude: [],
   excludedPropTypes: []
 };
 
