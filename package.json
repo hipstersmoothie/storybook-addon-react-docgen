@@ -1,0 +1,115 @@
+{
+  "name": "storybook-addon-react-docgen",
+  "version": "0.0.0",
+  "description": "storybook-addon-react-docgen",
+  "main": "dist/index.js",
+  "source": "index.js",
+  "author": {
+    "name": "Andrew Lisowski",
+    "email": "lisowski54@gmail.com"
+  },
+  "scripts": {
+    "test": "jest",
+    "lint": "xo",
+    "build": "babel src -d dist",
+    "build:watch": "npm run build -- --watch"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-xo-react": "^0.17.0",
+    "eslint-plugin-react": "^7.11.1",
+    "husky": "^1.2.0",
+    "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.15.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "xo": "^0.23.0"
+  },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": "./coverage",
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "html"
+    ],
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  },
+  "xo": {
+    "env": [
+      "dom",
+      "jest"
+    ],
+    "extends": [
+      "xo-react/space",
+      "prettier"
+    ],
+    "parser": "babel-eslint",
+    "rules": {
+      "react/jsx-tag-spacing": [
+        true,
+        "always"
+      ],
+      "unicorn/filename-case": [
+        "error",
+        {
+          "case": "pascalCase"
+        }
+      ]
+    }
+  },
+  "babel": {
+    "presets": [
+      "@babel/env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      "add-module-exports"
+    ]
+  },
+  "dependencies": {
+    "@emotion/styled": "^10.0.0-beta.13",
+    "@storybook/addons": "^4.0.8",
+    "@storybook/components": "^4.0.8",
+    "nested-object-assign": "^1.0.3",
+    "prop-types": "^15.6.2",
+    "react-addons-create-fragment": "^15.6.2",
+    "react-lifecycles-compat": "^3.0.4"
+  }
+}
