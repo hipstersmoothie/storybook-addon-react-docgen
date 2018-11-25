@@ -113,5 +113,6 @@
     "react",
     "docgen",
     "typescript"
-  ]
+  ],
+  "license": "MIT"
 }

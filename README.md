@@ -2,7 +2,9 @@
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=for-the-badge)](https://github.com/prettier/prettier) [![CircleCI](https://img.shields.io/circleci/project/github/hipstersmoothie/storybook-addon-react-docgen/master.svg?style=for-the-badge)](https://circleci.com/gh/hipstersmoothie/storybook-addon-react-docgen) [![npm](https://img.shields.io/npm/v/storybook-addon-react-docgen.svg?style=for-the-badge)](https://www.npmjs.com/package/storybook-addon-react-docgen) [![npm](https://img.shields.io/npm/dt/storybook-addon-react-docgen.svg?style=for-the-badge)](https://www.npmjs.com/package/storybook-addon-react-docgen)
 
-A storybook addon to display react docgen info.
+A storybook addon to display react docgen info. This addon is a drop in replacement for the "info" addon's prop table functionality. Rather than rendering with the component it renders in the addons panel. Works with typescript too!
+
+There exist other addons that do this, but they didn't work in the same way as the `info` addon. This resulted in complicated configuration changes. This plugin aims to be painless to switch to.
 
 ![Example Output](https://github.com/hipstersmoothie/storybook-addon-react-docgen/raw/master/example.png)
 
