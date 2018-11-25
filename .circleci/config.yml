@@ -1,0 +1,78 @@
+version: 2
+
+defaults: &defaults
+  working_directory: ~/storybook-addon-react-docgen
+  docker:
+    - image: circleci/node:latest-browsers
+
+jobs:
+  install:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            # Find a cache corresponding to this specific package.json checksum
+            # when this file is changed, this key will fail
+            - storybook-addon-react-docgen-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum ".circleci/config.yml" }}
+            - storybook-addon-react-docgen-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - storybook-addon-react-docgen-{{ .Branch }}
+            # Find the most recent cache used from any branch
+            - storybook-addon-react-docgen-master
+            - storybook-addon-react-docgen-
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          key: storybook-addon-react-docgen-{{ .Branch }}-{{ checksum "yarn.lock" }}-{{ checksum ".circleci/config.yml" }}
+          paths:
+            - node_modules
+            - ~/.cache/yarn
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  lint:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/storybook-addon-react-docgen
+      - run:
+          name: Lint
+          command: yarn lint
+
+  release:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/storybook-addon-react-docgen
+      - run: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+      - run:
+          name: Release
+          command: yarn run release
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - install:
+          filters:
+            tags:
+              only: /.*/
+
+      - lint:
+          requires:
+            - install
+          filters:
+            tags:
+              only: /.*/
+
+      - release:
+          requires:
+            - lint
+          filters:
+            branches:
+              only:
+                - master
