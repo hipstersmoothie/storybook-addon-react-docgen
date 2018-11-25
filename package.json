@@ -12,6 +12,9 @@
     "dist",
     "register.js"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "scripts": {
     "lint": "xo",
     "build": "babel src -d dist",
