@@ -40,6 +40,7 @@ export class PropsTable extends React.Component {
 
     return active ? (
       <div
+        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: text }}
         style={{ padding: 10, boxSizing: 'border-box', width: '100%' }}
         className="addon-PropsTable-container"

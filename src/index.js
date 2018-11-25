@@ -22,7 +22,7 @@ function addPropsTable(storyFn, context, infoOptions) {
     ...infoOptions
   };
 
-  // props.propTables can only be either an array of components or null
+  // Props.propTables can only be either an array of components or null
   // propTables option is allowed to be set to 'false' (a boolean)
   // if the option is false, replace it with null to avoid react warnings
   if (!options.propTables) {

@@ -35,7 +35,7 @@ export const getProps = (propTables, propTablesExclude, children) => {
     if (
       typeof innerChildren === 'string' ||
       typeof innerChildren.type === 'string' ||
-      (Array.isArray(propTablesExclude) && // also ignore excluded types
+      (Array.isArray(propTablesExclude) && // Also ignore excluded types
         ~propTablesExclude.indexOf(innerChildren.type)) // eslint-disable-line no-implicit-coercion
     ) {
       return;
@@ -112,7 +112,9 @@ class Story extends Component {
     propTables = components.map((type, i) => (
       // eslint-disable-next-line react/no-array-index-key
       <div key={`${getName(type)}_${i}`}>
-        <h2 style={stylesheet.propTableHead}>"{getName(type)}" Component</h2>
+        <h2 style={stylesheet.propTableHead}>
+          &ldquo;{getName(type)}&rdquo; Component
+        </h2>
         <this.props.PropTable
           type={type}
           maxPropObjectKeys={maxPropObjectKeys}
@@ -150,6 +152,7 @@ Story.propTypes = {
   propTables: PropTypes.arrayOf(PropTypes.func),
   // eslint-disable-next-line react/no-unused-prop-types
   styles: PropTypes.func.isRequired,
+  components: PropTypes.node.isRequired,
   maxPropObjectKeys: PropTypes.number.isRequired,
   maxPropArrayLength: PropTypes.number.isRequired,
   maxPropStringLength: PropTypes.number.isRequired,

@@ -12,7 +12,7 @@ import Literal from './Literal';
 
 import { TypeInfo } from './proptypes';
 
-// propType -> Component map - these are a bit more complex prop types to display
+// PropType -> Component map - these are a bit more complex prop types to display
 const propTypeComponentMap = new Map([
   ['shape', Shape],
   ['union', OneOfType],

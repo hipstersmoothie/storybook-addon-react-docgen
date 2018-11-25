@@ -42,7 +42,7 @@ function indent(breakIntoNewLines, level, isBlock) {
     breakIntoNewLines && (
       <span>
         <br />
-        {`${Array(level).join('  ')}  `}
+        {`${new Array(level).join('  ')}  `}
         {!isBlock && '  '}
       </span>
     )
@@ -94,7 +94,7 @@ function PreviewArray({
 }
 
 PreviewArray.propTypes = {
-  val: PropTypes.any, // eslint-disable-line
+  val: PropTypes.any, // eslint-disable-line react/require-default-props
   maxPropArrayLength: PropTypes.number.isRequired,
   maxPropStringLength: PropTypes.number.isRequired,
   maxPropsIntoLine: PropTypes.number.isRequired,
@@ -162,7 +162,7 @@ function PreviewObject({
 }
 
 PreviewObject.propTypes = {
-  val: PropTypes.any, // eslint-disable-line
+  val: PropTypes.any, // eslint-disable-line react/require-default-props
   maxPropObjectKeys: PropTypes.number.isRequired,
   maxPropStringLength: PropTypes.number.isRequired,
   maxPropsIntoLine: PropTypes.number.isRequired,
@@ -260,7 +260,7 @@ PropVal.defaultProps = {
 };
 
 PropVal.propTypes = {
-  val: PropTypes.any, // eslint-disable-line
+  val: PropTypes.any, // eslint-disable-line react/require-default-props
   maxPropObjectKeys: PropTypes.number,
   maxPropArrayLength: PropTypes.number,
   maxPropStringLength: PropTypes.number,

@@ -81,7 +81,6 @@ const propsFromPropTypes = type => {
 export default function makeTableComponent(Component) {
   return props => {
     if (!props.type) {
-      // eslint-disable-line
       return null;
     }
 

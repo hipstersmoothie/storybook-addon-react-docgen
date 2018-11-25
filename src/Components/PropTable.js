@@ -58,14 +58,16 @@ export const multiLineText = input => {
   const arrayOfText = text.split(/\r?\n|\r/g);
   const isSingleLine = arrayOfText.length < 2;
 
-  return isSingleLine
-    ? text
-    : arrayOfText.map((lineOfText, i) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <span key={`${lineOfText}.${i}`}>
-          {i > 0 && <br />} {lineOfText}
-        </span>
-      ));
+  if (isSingleLine) {
+    return text;
+  }
+
+  return arrayOfText.map((lineOfText, i) => (
+    // eslint-disable-next-line react/no-array-index-key
+    <span key={`${lineOfText}.${i}`}>
+      {i > 0 && <br />} {lineOfText}
+    </span>
+  ));
 };
 
 const determineIncludedPropTypes = (propDefinitions, excludedPropTypes) => {

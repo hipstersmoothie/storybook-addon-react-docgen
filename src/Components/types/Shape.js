@@ -40,10 +40,10 @@ class Shape extends React.Component {
     return (
       <span>
         <HighlightButton
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}
           highlight={hover}
           onClick={this.handleToggle}
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
         >
           {'{'}
         </HighlightButton>
@@ -67,10 +67,10 @@ class Shape extends React.Component {
           ))}
 
         <HighlightButton
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}
           highlight={hover}
           onClick={this.handleToggle}
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
         >
           {'}'}
         </HighlightButton>

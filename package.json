@@ -86,10 +86,7 @@
         "always"
       ],
       "unicorn/filename-case": [
-        "error",
-        {
-          "case": "pascalCase"
-        }
+        false
       ]
     }
   },
