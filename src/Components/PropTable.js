@@ -35,7 +35,7 @@ const styles = {
   propType: {
     ...cell,
     maxWidth: '150px',
-    overflow: 'scroll',
+    overflow: 'auto',
     color: '#2e7d32'
   },
   required: {
