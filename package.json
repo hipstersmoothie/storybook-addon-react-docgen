@@ -47,7 +47,9 @@
     "xo": "^0.23.0"
   },
   "peerDependencies": {
-    "react": "*"
+    "react": "*",
+    "@storybook/addons": "*",
+    "@storybook/components": "*"
   },
   "prettier": {
     "singleQuote": true
@@ -93,8 +95,6 @@
     ]
   },
   "dependencies": {
-    "@storybook/addons": "^4.0.8",
-    "@storybook/components": "^4.0.8",
     "nested-object-assign": "^1.0.3",
     "prop-types": "^15.6.2",
     "react-addons-create-fragment": "^15.6.2",
