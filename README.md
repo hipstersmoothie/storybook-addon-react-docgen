@@ -113,7 +113,10 @@ storiesOf('Component', module).add(
   ),
   {
     props: {
-      propTablesExclude: [Other]
+      propTablesExclude: [
+        Other, // the actual component
+        'Other' // the name of the component as a string
+      ]
     }
   }
 );
@@ -155,7 +158,7 @@ storiesOf('Component', module)
    * Accepts an array of component classes or functions
    * @default []
    */
-  propTablesExclude: Array<React.ComponentType>,
+  propTablesExclude: Array<React.ComponentType | string>,
   /**
    * Overrides styles of addon. The object should follow this shape:
    * https://github.com/storybooks/storybook/blob/master/addons/info/src/components/Story.js#L19.
