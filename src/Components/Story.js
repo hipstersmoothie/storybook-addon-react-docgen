@@ -36,7 +36,9 @@ export const getProps = (propTables, propTablesExclude, children) => {
       typeof innerChildren === 'string' ||
       typeof innerChildren.type === 'string' ||
       (Array.isArray(propTablesExclude) && // Also ignore excluded types
-        ~propTablesExclude.indexOf(innerChildren.type)) // eslint-disable-line no-implicit-coercion
+        (~propTablesExclude.indexOf(innerChildren.type) || // eslint-disable-line no-implicit-coercion
+          (typeof innerChildren.type === 'function' &&
+            propTablesExclude.indexOf(innerChildren.type.name) > -1))) // eslint-disable-line no-implicit-coercion
     ) {
       return;
     }
