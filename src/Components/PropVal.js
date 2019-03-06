@@ -2,41 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import createFragment from 'react-addons-create-fragment';
 
-const getValueStyles = (codeColors = {}) => ({
-  func: {
-    color: codeColors.func || '#170'
-  },
-
-  attr: {
-    color: codeColors.attr || '#666'
-  },
-
-  object: {
-    color: codeColors.object || '#666'
-  },
-
-  array: {
-    color: codeColors.array || '#666'
-  },
-
-  number: {
-    color: codeColors.number || '#a11'
-  },
-
-  string: {
-    color: codeColors.string || '#1EA7FD',
+const styles = {
+  default: {
+    color: '#1EA7FD',
     fontWeight: 700,
     wordBreak: 'break-word'
-  },
-
-  bool: {
-    color: codeColors.bool || '#a11'
   },
 
   empty: {
     color: '#444'
   }
-});
+};
 
 function indent(breakIntoNewLines, level, isBlock) {
   return (
@@ -55,8 +31,7 @@ function PreviewArray({
   level,
   maxPropArrayLength,
   maxPropStringLength,
-  maxPropsIntoLine,
-  valueStyles
+  maxPropsIntoLine
 }) {
   const items = {};
   const breakIntoNewLines = val.length > maxPropsIntoLine;
@@ -67,7 +42,6 @@ function PreviewArray({
         <PropVal
           val={item}
           level={level + 1}
-          valueStyles={valueStyles}
           maxPropStringLength={maxPropStringLength}
           maxPropsIntoLine={maxPropsIntoLine}
         />
@@ -87,7 +61,7 @@ function PreviewArray({
   }
 
   return (
-    <span style={valueStyles.array}>
+    <span style={styles.default}>
       [{createFragment(items)}
       {indent(breakIntoNewLines, level, true)}]
     </span>
@@ -99,17 +73,7 @@ PreviewArray.propTypes = {
   maxPropArrayLength: PropTypes.number.isRequired,
   maxPropStringLength: PropTypes.number.isRequired,
   maxPropsIntoLine: PropTypes.number.isRequired,
-  level: PropTypes.number.isRequired,
-  valueStyles: PropTypes.shape({
-    func: PropTypes.object,
-    attr: PropTypes.object,
-    object: PropTypes.object,
-    array: PropTypes.object,
-    number: PropTypes.object,
-    string: PropTypes.object,
-    bool: PropTypes.object,
-    empty: PropTypes.object
-  }).isRequired
+  level: PropTypes.number.isRequired
 };
 
 function PreviewObject({
@@ -117,8 +81,7 @@ function PreviewObject({
   level,
   maxPropObjectKeys,
   maxPropStringLength,
-  maxPropsIntoLine,
-  valueStyles
+  maxPropsIntoLine
 }) {
   const names = Object.keys(val);
   const items = {};
@@ -127,7 +90,7 @@ function PreviewObject({
     items[`k${i}`] = (
       <span>
         {indent(breakIntoNewLines, level)}
-        <span style={valueStyles.attr}>{name}</span>
+        <span style={styles.default}>{name}</span>
       </span>
     );
     items[`c${i}`] = ': ';
@@ -135,7 +98,6 @@ function PreviewObject({
       <PropVal
         val={val[name]}
         level={level + 1}
-        valueStyles={valueStyles}
         maxPropStringLength={maxPropStringLength}
         maxPropsIntoLine={maxPropsIntoLine}
       />
@@ -153,7 +115,7 @@ function PreviewObject({
     delete items[`m${names.length - 1}`];
   }
   return (
-    <span style={valueStyles.object}>
+    <span style={styles.default}>
       {'{'}
       {createFragment(items)}
       {indent(breakIntoNewLines, level, true)}
@@ -167,17 +129,7 @@ PreviewObject.propTypes = {
   maxPropObjectKeys: PropTypes.number.isRequired,
   maxPropStringLength: PropTypes.number.isRequired,
   maxPropsIntoLine: PropTypes.number.isRequired,
-  level: PropTypes.number.isRequired,
-  valueStyles: PropTypes.shape({
-    func: PropTypes.object,
-    attr: PropTypes.object,
-    object: PropTypes.object,
-    array: PropTypes.object,
-    number: PropTypes.object,
-    string: PropTypes.object,
-    bool: PropTypes.object,
-    empty: PropTypes.object
-  }).isRequired
+  level: PropTypes.number.isRequired
 };
 
 function PropVal(props) {
@@ -186,16 +138,13 @@ function PropVal(props) {
     maxPropObjectKeys,
     maxPropArrayLength,
     maxPropStringLength,
-    maxPropsIntoLine,
-    theme
+    maxPropsIntoLine
   } = props;
   let { val } = props;
-  const { codeColors } = theme || {};
   let content = null;
-  const valueStyles = props.valueStyles || getValueStyles(codeColors);
 
   if (typeof val === 'number') {
-    content = <span style={valueStyles.number}>{val}</span>;
+    content = <span style={styles.default}>{val}</span>;
   } else if (typeof val === 'string') {
     if (val.length > maxPropStringLength) {
       val = `${val.slice(0, maxPropStringLength)}…`;
@@ -203,45 +152,39 @@ function PropVal(props) {
     if (level > 1) {
       val = `'${val}'`;
     }
-    content = <span style={valueStyles.string}>{val}</span>;
+    content = <span style={styles.default}>{val}</span>;
   } else if (typeof val === 'boolean') {
-    content = <span style={valueStyles.bool}>{`${val}`}</span>;
+    content = <span style={styles.default}>{`${val}`}</span>;
   } else if (Array.isArray(val)) {
     content = (
       <PreviewArray
-        {...{
-          val,
-          level,
-          maxPropArrayLength,
-          maxPropStringLength,
-          maxPropsIntoLine,
-          valueStyles
-        }}
+        val={val}
+        level={level}
+        maxPropArrayLength={maxPropArrayLength}
+        maxPropStringLength={maxPropStringLength}
+        maxPropsIntoLine={maxPropsIntoLine}
       />
     );
   } else if (typeof val === 'function') {
-    content = <span style={valueStyles.func}>{val.name || 'anonymous'}</span>;
+    content = <span style={styles.default}>{val.name || 'anonymous'}</span>;
   } else if (!val) {
-    content = <span style={valueStyles.empty}>{`${val}`}</span>;
+    content = <span style={styles.default}>{`${val}`}</span>;
   } else if (typeof val !== 'object') {
     content = <span>…</span>;
   } else if (React.isValidElement(val)) {
     content = (
-      <span style={valueStyles.object}>
+      <span style={styles.default}>
         {`<${val.type.displayName || val.type.name || val.type} />`}
       </span>
     );
   } else {
     content = (
       <PreviewObject
-        {...{
-          val,
-          level,
-          maxPropObjectKeys,
-          maxPropStringLength,
-          maxPropsIntoLine,
-          valueStyles
-        }}
+        val={val}
+        level={level}
+        maxPropObjectKeys={maxPropObjectKeys}
+        maxPropStringLength={maxPropStringLength}
+        maxPropsIntoLine={maxPropsIntoLine}
       />
     );
   }
@@ -255,9 +198,7 @@ PropVal.defaultProps = {
   maxPropArrayLength: 3,
   maxPropStringLength: 50,
   maxPropsIntoLine: 3,
-  level: 1,
-  theme: {},
-  valueStyles: null
+  level: 1
 };
 
 PropVal.propTypes = {
@@ -266,20 +207,7 @@ PropVal.propTypes = {
   maxPropArrayLength: PropTypes.number,
   maxPropStringLength: PropTypes.number,
   maxPropsIntoLine: PropTypes.number,
-  level: PropTypes.number,
-  theme: PropTypes.shape({
-    codeColors: PropTypes.object
-  }),
-  valueStyles: PropTypes.shape({
-    func: PropTypes.object,
-    attr: PropTypes.object,
-    object: PropTypes.object,
-    array: PropTypes.object,
-    number: PropTypes.object,
-    string: PropTypes.object,
-    bool: PropTypes.object,
-    empty: PropTypes.object
-  })
+  level: PropTypes.number
 };
 
 export default PropVal;
