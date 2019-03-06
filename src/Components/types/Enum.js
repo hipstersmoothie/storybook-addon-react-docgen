@@ -1,12 +1,9 @@
 import React from 'react';
 import { TypeInfo, getPropTypes } from './proptypes';
+import { joinValues } from './utils';
 
 const Enum = ({ propType }) => (
-  <span>
-    {getPropTypes(propType)
-      .map(({ value }) => value)
-      .join(' | ')}
-  </span>
+  <span>{joinValues(getPropTypes(propType))}</span>
 );
 
 Enum.propTypes = {

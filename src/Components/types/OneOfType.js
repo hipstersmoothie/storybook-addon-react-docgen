@@ -5,11 +5,13 @@ import { TypeInfo, getPropTypes } from './proptypes';
 
 const OneOfType = ({ propType }) => {
   const propTypes = getPropTypes(propType);
+
   return (
     <span>
       {propTypes
         .map((value, i) => {
           const key = `${value.name}${value.value ? `-${value.value}` : ''}`;
+
           return [
             <PrettyPropType key={key} propType={value} />,
             i < propTypes.length - 1 ? (
@@ -21,7 +23,9 @@ const OneOfType = ({ propType }) => {
     </span>
   );
 };
+
 OneOfType.propTypes = {
   propType: TypeInfo.isRequired
 };
+
 export default OneOfType;

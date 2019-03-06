@@ -30,13 +30,15 @@ const styles = {
 
   property: {
     ...cell,
-    color: '#c62828'
+    fontWeight: 500,
+    color: '#FF4400'
   },
   propType: {
     ...cell,
+    fontWeight: 500,
     maxWidth: '150px',
     overflow: 'auto',
-    color: '#2e7d32'
+    color: '#66BF3C'
   },
   required: {
     ...cell
