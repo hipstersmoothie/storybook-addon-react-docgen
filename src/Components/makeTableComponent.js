@@ -17,7 +17,7 @@ const hasDocgen = type => isNotEmpty(type.__docgenInfo);
 const propsFromDocgen = type => {
   const props = {};
   const docgenInfoProps = type.__docgenInfo.props;
-  const defaults = type.defaultProps;
+  const defaults = type.defaultProps || {};
 
   Object.keys(docgenInfoProps).forEach(property => {
     const docgenInfoProp = docgenInfoProps[property];
