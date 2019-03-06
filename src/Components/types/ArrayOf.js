@@ -5,11 +5,7 @@ import { TypeInfo, getPropTypes } from './proptypes';
 
 const ArrayOf = ({ propType }) => (
   <span>
-    <span>[</span>
-    <span>
-      <PrettyPropType propType={getPropTypes(propType)} />
-    </span>
-    <span>]</span>
+    [<PrettyPropType propType={getPropTypes(propType)} />]
   </span>
 );
 

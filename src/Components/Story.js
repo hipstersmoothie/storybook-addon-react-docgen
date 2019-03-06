@@ -62,24 +62,20 @@ const stylesheetBase = {
     fontWeight: 300,
     lineHeight: 1.45,
     fontSize: '15px',
-    border: '1px solid #eee',
     padding: '20px 40px 40px',
     borderRadius: '2px',
-    backgroundColor: '#fff',
     marginTop: '20px',
     marginBottom: '20px'
   },
-  infoStory: {},
-  source: {
-    h1: {
-      margin: '20px 0 0 0',
-      padding: '0 0 5px 0',
-      fontSize: '25px',
-      borderBottom: '1px solid #EEE'
-    }
+  h1: {
+    margin: '20px 0 0 0',
+    padding: '0 0 5px 0',
+    fontSize: '25px',
+    borderBottom: '1px solid #EEE'
   },
   propTableHead: {
-    margin: '20px 0 0 0'
+    margin: '20px 0 0 0',
+    fontSize: 20
   }
 };
 
@@ -137,7 +133,7 @@ class Story extends Component {
 
     return (
       <div>
-        <h1 style={stylesheet.source.h1}>Prop Types</h1>
+        <h1 style={stylesheet.h1}>Prop Types</h1>
         {propTables}
       </div>
     );

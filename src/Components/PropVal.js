@@ -24,7 +24,8 @@ const getValueStyles = (codeColors = {}) => ({
   },
 
   string: {
-    color: codeColors.string || '#22a',
+    color: codeColors.string || '#1EA7FD',
+    fontWeight: 700,
     wordBreak: 'break-word'
   },
 
