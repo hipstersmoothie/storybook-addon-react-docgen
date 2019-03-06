@@ -17,10 +17,12 @@ const hasDocgen = type => isNotEmpty(type.__docgenInfo);
 const propsFromDocgen = type => {
   const props = {};
   const docgenInfoProps = type.__docgenInfo.props;
+  const defaults = type.defaultProps;
 
   Object.keys(docgenInfoProps).forEach(property => {
     const docgenInfoProp = docgenInfoProps[property];
-    const defaultValueDesc = docgenInfoProp.defaultValue || {};
+    const defaultValueDesc =
+      docgenInfoProp.defaultValue || { value: defaults[property] } || {};
     const propType = docgenInfoProp.flowType || docgenInfoProp.type || 'other';
 
     props[property] = {
