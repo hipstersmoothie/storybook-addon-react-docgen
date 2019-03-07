@@ -3,7 +3,6 @@
 import React, { Component } from 'react';
 import { polyfill } from 'react-lifecycles-compat';
 import PropTypes from 'prop-types';
-import { baseFonts } from '@storybook/components';
 
 const getName = type => type.displayName || type.name;
 
@@ -58,7 +57,6 @@ export const getProps = (propTables, propTablesExclude, children) => {
 
 const stylesheetBase = {
   infoBody: {
-    ...baseFonts,
     fontWeight: 300,
     lineHeight: 1.45,
     fontSize: '15px',
