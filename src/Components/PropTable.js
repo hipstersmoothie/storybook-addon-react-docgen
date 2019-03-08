@@ -15,7 +15,8 @@ const cell = {
 const styles = {
   table: {
     width: '100%',
-    padding: '2rem 0'
+    margin: '2rem 0',
+    borderCollapse: 'collapse'
   },
   header: {
     paddingRight: 20,
