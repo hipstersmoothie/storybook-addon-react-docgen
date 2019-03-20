@@ -5,6 +5,8 @@ import { polyfill } from 'react-lifecycles-compat';
 import PropTypes from 'prop-types';
 
 const getName = type => type.displayName || type.name;
+const getDescription = type =>
+  type.__docgenInfo && type.__docgenInfo.description;
 
 export const getProps = (propTables, propTablesExclude, children) => {
   const types = new Map();
@@ -74,7 +76,8 @@ const stylesheetBase = {
   propTableHead: {
     margin: '20px 0 0 0',
     fontSize: 20
-  }
+  },
+  description: {}
 };
 
 class Story extends Component {
@@ -109,21 +112,25 @@ class Story extends Component {
       return null;
     }
 
-    propTables = components.map((type, i) => (
-      // eslint-disable-next-line react/no-array-index-key
-      <div key={`${getName(type)}_${i}`}>
-        <h2 style={stylesheet.propTableHead}>
-          &ldquo;{getName(type)}&rdquo; Component
-        </h2>
-        <this.props.PropTable
-          type={type}
-          maxPropObjectKeys={maxPropObjectKeys}
-          maxPropArrayLength={maxPropArrayLength}
-          maxPropStringLength={maxPropStringLength}
-          excludedPropTypes={excludedPropTypes}
-        />
-      </div>
-    ));
+    propTables = components.map((type, i) => {
+      const description = getDescription(type);
+      return (
+        // eslint-disable-next-line react/no-array-index-key
+        <div key={`${getName(type)}_${i}`}>
+          <h2 style={stylesheet.propTableHead}>
+            &ldquo;{getName(type)}&rdquo; Component
+          </h2>
+          {description && <p style={stylesheet.description}>{description}</p>}
+          <this.props.PropTable
+            type={type}
+            maxPropObjectKeys={maxPropObjectKeys}
+            maxPropArrayLength={maxPropArrayLength}
+            maxPropStringLength={maxPropStringLength}
+            excludedPropTypes={excludedPropTypes}
+          />
+        </div>
+      );
+    });
 
     if (!propTables || propTables.length === 0) {
       return null;
