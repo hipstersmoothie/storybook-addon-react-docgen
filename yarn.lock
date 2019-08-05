@@ -868,6 +868,11 @@
     react-textarea-autosize "^7.0.4"
     render-fragment "^0.1.1"
 
+"@storybook/core-events@^4.1.13":
+  version "4.1.18"
+  resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-4.1.18.tgz#0c445c9ff72c83cee90efae99dbc6807daab1a12"
+  integrity sha512-G4vr1zSDdizbLmBdopBJLcfTYuURUevQ6OokbGqOfWRxfLmfCu2azeeQjWEcbHi9Hu3KThDcSUmapKZYNwNxMw==
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"

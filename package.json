@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-react-docgen",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A storybook addon to display react docgen info.",
   "main": "dist/index.js",
   "source": "index.js",
@@ -34,6 +34,7 @@
     "@babel/preset-react": "^7.0.0",
     "@storybook/addons": "^4.1.13",
     "@storybook/components": "^4.1.13",
+    "@storybook/core-events": "^4.1.13",
     "babel-core": "^7.0.0-bridge",
     "babel-eslint": "^10.0.1",
     "babel-plugin-add-module-exports": "^1.0.0",
@@ -52,6 +53,7 @@
   "peerDependencies": {
     "@storybook/addons": "*",
     "@storybook/components": "*",
+    "@storybook/core-events": "*",
     "react": "*"
   },
   "prettier": {

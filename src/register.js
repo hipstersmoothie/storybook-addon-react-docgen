@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import addons from '@storybook/addons';
+import { STORY_CHANGED } from '@storybook/core-events';
 
 export class PropsTable extends React.Component {
   state = { text: '' };
@@ -11,19 +12,15 @@ export class PropsTable extends React.Component {
     channel.on('storybook/PropsTable/add_PropsTable', this.onAddPropsTable);
 
     // Clear the current PropsTable on every story change.
-    this.stopListeningOnStory = api.onStory(() => {
-      this.onAddPropsTable('');
-    });
+    api.on(STORY_CHANGED, this.onAddPropsTable);
   }
 
   // This is some cleanup tasks when the PropsTable panel is unmounting.
   componentWillUnmount() {
-    if (this.stopListeningOnStory) {
-      this.stopListeningOnStory();
-    }
+    const { channel, api } = this.props;
+    api.off(STORY_CHANGED, this.onAddPropsTable);
 
     this.unmounted = true;
-    const { channel } = this.props;
     channel.removeListener(
       'storybook/PropsTable/add_PropsTable',
       this.onAddPropsTable
@@ -57,7 +54,7 @@ PropsTable.propTypes = {
     removeListener: PropTypes.func
   }).isRequired,
   api: PropTypes.shape({
-    onStory: PropTypes.func,
+    on: PropTypes.func,
     getQueryParam: PropTypes.func,
     setQueryParams: PropTypes.func
   }).isRequired
