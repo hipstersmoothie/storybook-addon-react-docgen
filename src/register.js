@@ -70,7 +70,12 @@ addons.register('storybook/props', api => {
     title: 'Props',
     // eslint-disable-next-line react/prop-types
     render: ({ active }) => (
-      <PropsTable channel={channel} api={api} active={active} />
+      <PropsTable
+        key="storybook-addon-react-docgen"
+        channel={channel}
+        api={api}
+        active={active}
+      />
     )
   });
 });
