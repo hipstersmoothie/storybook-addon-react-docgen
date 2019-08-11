@@ -21,6 +21,27 @@ export const getProps = (propTables, propTablesExclude, children) => {
     });
   }
 
+  const propTableCompare = (element, Component) => {
+    // https://github.com/gaearon/react-hot-loader#checking-element-types
+    // eslint-disable-next-line no-undef
+    if (typeof reactHotLoaderGlobal !== 'undefined') {
+      // eslint-disable-next-line no-undef
+      if (reactHotLoaderGlobal.areComponentsEqual(element.type, Component)) {
+        return true;
+      }
+    }
+
+    if (element.type === Component) {
+      return true;
+    }
+
+    if (typeof element.type && element.type.name === Component) {
+      return true;
+    }
+
+    return false;
+  };
+
   // Depth-first traverse and collect types
   const extract = innerChildren => {
     if (!innerChildren) {
@@ -37,9 +58,7 @@ export const getProps = (propTables, propTablesExclude, children) => {
       typeof innerChildren === 'string' ||
       typeof innerChildren.type === 'string' ||
       (Array.isArray(propTablesExclude) && // Also ignore excluded types
-        (~propTablesExclude.indexOf(innerChildren.type) || // eslint-disable-line no-implicit-coercion
-          (typeof innerChildren.type === 'function' &&
-            propTablesExclude.indexOf(innerChildren.type.name) > -1))) // eslint-disable-line no-implicit-coercion
+        propTablesExclude.some(Comp => propTableCompare(innerChildren, Comp)))
     ) {
       return;
     }
