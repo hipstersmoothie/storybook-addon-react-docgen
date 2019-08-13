@@ -35,7 +35,11 @@ export const getProps = (propTables, propTablesExclude, children) => {
       return true;
     }
 
-    if (typeof element.type && element.type.name === Component) {
+    if (
+      element.type &&
+      typeof element.type &&
+      element.type.name === Component
+    ) {
       return true;
     }
 
