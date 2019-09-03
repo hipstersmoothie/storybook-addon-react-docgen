@@ -24,7 +24,7 @@
     "build": "babel src -d dist",
     "build:watch": "npm run build -- --watch",
     "prerelease": "npm run build",
-    "release": "github-semantic-version --bump --changelog --push --publish"
+    "release": "auto shipit -w"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
@@ -35,6 +35,8 @@
     "@storybook/addons": "^4.1.13",
     "@storybook/components": "^4.1.13",
     "@storybook/core-events": "^4.1.13",
+    "auto": "7.4.4",
+    "auto-config-hipstersmoothie": "1.0.4",
     "babel-core": "^7.0.0-bridge",
     "babel-eslint": "^10.0.1",
     "babel-plugin-add-module-exports": "^1.0.0",
@@ -42,7 +44,6 @@
     "eslint-config-prettier": "^3.3.0",
     "eslint-config-xo-react": "^0.17.0",
     "eslint-plugin-react": "^7.11.1",
-    "github-semantic-version": "^7.6.0",
     "husky": "^1.2.0",
     "lint-staged": "^8.1.0",
     "prettier": "^1.15.2",
@@ -105,11 +106,14 @@
     "react-addons-create-fragment": "^15.6.2",
     "react-lifecycles-compat": "^3.0.4"
   },
-  "gsv": {
-    "majorLabel": "Version: Major",
-    "minorLabel": "Version: Minor",
-    "patchLabel": "Version: Patch",
-    "internalLabel": "No version: Internal"
+  "auto": {
+    "extends": "hipstersmoothie",
+    "labels": {
+      "major": "Version: Major",
+      "minor": "Version: Minor",
+      "patch": "Version: Patch",
+      "internal": "No version: Internal"
+    }
   },
   "keywords": [
     "storybook",
