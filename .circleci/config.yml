@@ -48,7 +48,6 @@ jobs:
       - attach_workspace:
           at: ~/storybook-addon-react-docgen
       - run: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
-      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/storybook-addon-react-docgen/.npmrc
       - run:
           name: Release
           command: yarn run release
@@ -57,22 +56,12 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - install:
-          filters:
-            tags:
-              only: /.*/
+      - install
 
       - lint:
           requires:
             - install
-          filters:
-            tags:
-              only: /.*/
 
       - release:
           requires:
             - lint
-          filters:
-            branches:
-              only:
-                - master
