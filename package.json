@@ -39,7 +39,7 @@
     "auto-config-hipstersmoothie": "1.0.4",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.3",
-    "babel-plugin-add-module-exports": "1.0.0",
+    "babel-plugin-add-module-exports": "1.0.2",
     "eslint": "5.16.0",
     "eslint-config-prettier": "3.3.0",
     "eslint-config-xo-react": "0.17.0",
