@@ -1,3 +1,15 @@
+# v1.2.20 (Fri Sep 20 2019)
+
+#### 🐛  Bug Fix
+
+- Only render story content once, fix storyboook 5.2 knobs compatibility issue [#49](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/49) ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+#### Authors: 1
+
+- Andrew Lisowski ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+---
+
 # v1.2.19 (Fri Sep 20 2019)
 
 
