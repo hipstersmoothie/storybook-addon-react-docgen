@@ -66,14 +66,15 @@ export const withPropsTable = makeDecorator({
         ? propsTableOptions
         : { ...options, ...propsTableOptions };
 
-    const res = addPropsTable(getStory(context), context, mergedOptions);
+    const content = getStory(context);
+    const res = addPropsTable(content, context, mergedOptions);
 
     channel.emit(
       'storybook/PropsTable/add_PropsTable',
-      ReactDOM.renderToString(<Story {...res}>{getStory(context)}</Story>)
+      ReactDOM.renderToString(<Story {...res}>{content}</Story>)
     );
 
-    return getStory(context);
+    return content;
   }
 });
 
