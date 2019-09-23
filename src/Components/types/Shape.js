@@ -23,12 +23,18 @@ const HighlightButton = props => (
 );
 
 class Shape extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      minimized: false
-    };
-  }
+  static propTypes = {
+    propType: TypeInfo,
+    depth: PropTypes.number.isRequired
+  };
+
+  static defaultProps = {
+    propType: null
+  };
+
+  state = {
+    minimized: false
+  };
 
   handleToggle = () => {
     const { minimized } = this.state;
@@ -69,14 +75,5 @@ class Shape extends React.Component {
     );
   }
 }
-
-Shape.propTypes = {
-  propType: TypeInfo,
-  depth: PropTypes.number.isRequired
-};
-
-Shape.defaultProps = {
-  propType: null
-};
 
 export default Shape;

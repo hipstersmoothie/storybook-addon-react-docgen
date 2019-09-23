@@ -86,6 +86,7 @@ function PreviewObject({
   const names = Object.keys(val);
   const items = {};
   const breakIntoNewLines = names.length > maxPropsIntoLine;
+
   names.slice(0, maxPropObjectKeys).forEach((name, i) => {
     items[`k${i}`] = (
       <span>
@@ -104,6 +105,7 @@ function PreviewObject({
     );
     items[`m${i}`] = ',';
   });
+
   if (names.length > maxPropObjectKeys) {
     items.rest = (
       <span>
@@ -114,6 +116,7 @@ function PreviewObject({
   } else {
     delete items[`m${names.length - 1}`];
   }
+
   return (
     <span style={styles.default}>
       {'{'}
@@ -125,7 +128,8 @@ function PreviewObject({
 }
 
 PreviewObject.propTypes = {
-  val: PropTypes.any, // eslint-disable-line react/require-default-props
+  // eslint-disable-next-line react/require-default-props
+  val: PropTypes.any,
   maxPropObjectKeys: PropTypes.number.isRequired,
   maxPropStringLength: PropTypes.number.isRequired,
   maxPropsIntoLine: PropTypes.number.isRequired,
@@ -149,9 +153,11 @@ function PropVal(props) {
     if (val.length > maxPropStringLength) {
       val = `${val.slice(0, maxPropStringLength)}…`;
     }
+
     if (level > 1) {
       val = `'${val}'`;
     }
+
     content = <span style={styles.default}>{val}</span>;
   } else if (typeof val === 'boolean') {
     content = <span style={styles.default}>{`${val}`}</span>;
@@ -202,7 +208,7 @@ PropVal.defaultProps = {
 };
 
 PropVal.propTypes = {
-  val: PropTypes.any, // eslint-disable-line react/require-default-props
+  val: PropTypes.any,
   maxPropObjectKeys: PropTypes.number,
   maxPropArrayLength: PropTypes.number,
   maxPropStringLength: PropTypes.number,

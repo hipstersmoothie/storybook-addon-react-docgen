@@ -4,6 +4,22 @@ import addons from '@storybook/addons';
 import { STORY_CHANGED } from '@storybook/core-events';
 
 export class PropsTable extends React.Component {
+  static propTypes = {
+    // eslint-disable-next-line react/boolean-prop-naming
+    active: PropTypes.bool.isRequired,
+    channel: PropTypes.shape({
+      on: PropTypes.func,
+      emit: PropTypes.func,
+      removeListener: PropTypes.func
+    }).isRequired,
+    api: PropTypes.shape({
+      on: PropTypes.func,
+      off: PropTypes.func,
+      getQueryParam: PropTypes.func,
+      setQueryParams: PropTypes.func
+    }).isRequired
+  };
+
   state = { text: '' };
 
   componentDidMount() {
@@ -45,20 +61,6 @@ export class PropsTable extends React.Component {
     ) : null;
   }
 }
-
-PropsTable.propTypes = {
-  active: PropTypes.bool.isRequired,
-  channel: PropTypes.shape({
-    on: PropTypes.func,
-    emit: PropTypes.func,
-    removeListener: PropTypes.func
-  }).isRequired,
-  api: PropTypes.shape({
-    on: PropTypes.func,
-    getQueryParam: PropTypes.func,
-    setQueryParams: PropTypes.func
-  }).isRequired
-};
 
 addons.register('storybook/props', api => {
   const channel = addons.getChannel();
