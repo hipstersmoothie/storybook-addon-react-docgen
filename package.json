@@ -27,10 +27,10 @@
     "release": "auto shipit -w"
   },
   "devDependencies": {
-    "@babel/cli": "7.6.0",
-    "@babel/core": "7.6.0",
+    "@babel/cli": "7.6.2",
+    "@babel/core": "7.6.2",
     "@babel/plugin-proposal-class-properties": "7.5.5",
-    "@babel/preset-env": "7.6.0",
+    "@babel/preset-env": "7.6.2",
     "@babel/preset-react": "7.0.0",
     "@storybook/addons": "5.2.1",
     "@storybook/components": "5.2.1",
