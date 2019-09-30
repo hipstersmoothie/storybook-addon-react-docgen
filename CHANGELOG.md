@@ -1,3 +1,18 @@
+# v1.2.27 (Mon Sep 30 2019)
+
+#### 🐛  Bug Fix
+
+- Update renovate.json [#61](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/61) ([@hipstersmoothie](https://github.com/hipstersmoothie))
+- Update dependency xo to v0.25.3 [#53](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/53) ([@renovate-bot](https://github.com/renovate-bot) [@hipstersmoothie](https://github.com/hipstersmoothie))
+- Update dependency eslint-plugin-react-hooks to v2.1.1 [#60](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/60) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Andrew Lisowski ([@hipstersmoothie](https://github.com/hipstersmoothie))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v1.2.26 (Mon Sep 30 2019)
 
 #### 📝  Documentation
