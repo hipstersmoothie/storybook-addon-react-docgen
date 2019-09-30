@@ -36,7 +36,7 @@
     "@storybook/components": "5.2.1",
     "@storybook/core-events": "5.2.1",
     "auto": "7.6.2",
-    "auto-config-hipstersmoothie": "1.0.4",
+    "auto-config-hipstersmoothie": "^1.0.4",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.3",
     "babel-plugin-add-module-exports": "1.0.2",
@@ -100,13 +100,7 @@
     "react-lifecycles-compat": "^3.0.4"
   },
   "auto": {
-    "extends": "hipstersmoothie",
-    "labels": {
-      "major": "Version: Major",
-      "minor": "Version: Minor",
-      "patch": "Version: Patch",
-      "internal": "No version: Internal"
-    }
+    "extends": "hipstersmoothie"
   },
   "keywords": [
     "storybook",
