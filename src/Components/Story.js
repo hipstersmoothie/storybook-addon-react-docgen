@@ -51,13 +51,16 @@ export const getProps = (propTables, propTablesExclude, children) => {
     if (!innerChildren) {
       return;
     }
+
     if (Array.isArray(innerChildren)) {
       innerChildren.forEach(extract);
       return;
     }
+
     if (innerChildren.props && innerChildren.props.children) {
       extract(innerChildren.props.children);
     }
+
     if (
       typeof innerChildren === 'string' ||
       typeof innerChildren.type === 'string' ||
@@ -66,6 +69,7 @@ export const getProps = (propTables, propTablesExclude, children) => {
     ) {
       return;
     }
+
     if (innerChildren.type && !types.has(innerChildren.type)) {
       types.set(innerChildren.type, true);
     }
@@ -104,6 +108,23 @@ const stylesheetBase = {
 };
 
 class Story extends Component {
+  static displayName = 'Story';
+
+  static propTypes = {
+    propTables: PropTypes.arrayOf(PropTypes.func),
+    styles: PropTypes.func.isRequired,
+    components: PropTypes.array.isRequired,
+    maxPropObjectKeys: PropTypes.number.isRequired,
+    maxPropArrayLength: PropTypes.number.isRequired,
+    maxPropStringLength: PropTypes.number.isRequired,
+    excludedPropTypes: PropTypes.arrayOf(PropTypes.string)
+  };
+
+  static defaultProps = {
+    propTables: null,
+    excludedPropTypes: []
+  };
+
   state = {
     stylesheet: this.props.styles(stylesheetBase)
   };
@@ -171,24 +192,6 @@ class Story extends Component {
     return this._renderInline();
   }
 }
-
-Story.displayName = 'Story';
-
-Story.propTypes = {
-  propTables: PropTypes.arrayOf(PropTypes.func),
-  // eslint-disable-next-line react/no-unused-prop-types
-  styles: PropTypes.func.isRequired,
-  components: PropTypes.array.isRequired,
-  maxPropObjectKeys: PropTypes.number.isRequired,
-  maxPropArrayLength: PropTypes.number.isRequired,
-  maxPropStringLength: PropTypes.number.isRequired,
-  excludedPropTypes: PropTypes.arrayOf(PropTypes.string)
-};
-
-Story.defaultProps = {
-  propTables: null,
-  excludedPropTypes: []
-};
 
 polyfill(Story);
 

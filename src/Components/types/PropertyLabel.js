@@ -20,6 +20,7 @@ const PropertyLabel = ({ property, required }) => {
 
 PropertyLabel.propTypes = {
   property: PropTypes.string,
+  // eslint-disable-next-line react/boolean-prop-naming
   required: PropTypes.bool
 };
 
