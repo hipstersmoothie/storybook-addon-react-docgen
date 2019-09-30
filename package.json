@@ -73,22 +73,14 @@
     ]
   },
   "xo": {
-    "env": [
-      "dom"
-    ],
     "extends": [
       "xo-react/space",
       "prettier"
     ],
     "parser": "babel-eslint",
     "rules": {
-      "react/jsx-tag-spacing": [
-        true,
-        "always"
-      ],
-      "unicorn/filename-case": [
-        false
-      ]
+      "react/jsx-tag-spacing": 0,
+      "unicorn/filename-case": 0
     }
   },
   "babel": {
