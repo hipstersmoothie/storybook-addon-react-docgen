@@ -1,3 +1,16 @@
+# v1.2.26 (Mon Sep 30 2019)
+
+#### 📝  Documentation
+
+- Update typescript docs and merge dep updates [#51](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/51) ([@hipstersmoothie](https://github.com/hipstersmoothie) [@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 2
+
+- Andrew Lisowski ([@hipstersmoothie](https://github.com/hipstersmoothie))
+- Renovate Bot ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v1.2.22 (Mon Sep 30 2019)
 
 #### 🔩 Dependency Updates
