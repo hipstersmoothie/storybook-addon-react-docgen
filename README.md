@@ -198,6 +198,55 @@ import React, { FC } from "react";
 export const Button: FC<ButtonProps> = () => {};
 ```
 
+3. Usage within the story matter: This addon determines what components to display props for by finding all components used in the JSX returned by the story. So if you want prop-types to be displayed for a component, you **must** return that component in the story function.
+
+
+```tsx
+import React from "react";
+import { Button } from "./Button";
+
+export default {
+  title: "Button"
+};
+
+/** WILL NOT WORK *;
+
+// Since the usage of the component is not in the JSX
+// returned by the story function no props are displayed
+const MyFancyExample = () => {
+  const [count, setCount] = React.useState(0);
+  
+  return (
+    <Button 
+      primary={boolean("primary", false)}
+      onClick={() => setCount(count + 1)}
+    >
+      "hello: " {count}
+    </Button>
+  )
+}
+
+
+export const BaseStory = () => <MyFancyExample />;
+
+/** WILL WORK */
+
+// The JSX returned by the story uses Button, so we will
+// get the props types for button.
+export const BaseStory = () => {
+  const [count, setCount] = React.useState(0);
+  
+  return (
+    <Button 
+      primary={boolean("primary", false)}
+      onClick={() => setCount(count + 1)}
+    >
+      "hello: " {count}
+    </Button>
+  )
+}
+```
+
 ### Why are default props so hard to get right? (TypeScript only)
 
 The `react` types are magical and you're probably doing too much. Using `React.FC` is the quickest way to ramp up the complexity of your components. Once you use that you lose the `defaultProps` experience.
