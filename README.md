@@ -209,7 +209,7 @@ export default {
   title: "Button"
 };
 
-/** WILL NOT WORK *;
+/** WILL NOT WORK */
 
 // Since the usage of the component is not in the JSX
 // returned by the story function no props are displayed
