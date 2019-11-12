@@ -252,6 +252,26 @@ const Usage = () => (
 )
 ```
 
+### My components extends from HTML elements and there are way too many props in the panel! How do I get rid of some?
+
+You can add a filter to `react-docgen-typescript-loader` that will omit anything that comes from `@types/react`.s
+
+```js
+{
+  loader: require.resolve('react-docgen-typescript-loader'),
+  options: {
+    tsconfigPath,
+    propFilter(prop) {
+      if (prop.parent) {
+        return !prop.parent.fileName.includes('@types/react');
+      }
+
+      return true;
+    }
+  }
+}
+```
+
 ## Inspiration
 
 Code heavily inspired by (copied from):
