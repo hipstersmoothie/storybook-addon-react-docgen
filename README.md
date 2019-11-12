@@ -162,6 +162,96 @@ The TableComponent option allows you to define how the prop table should be rend
 }
 ```
 
+## FAQ
+
+### Nothing shows up, this is broken!
+
+The way that the packages implement docgen for react means that there are some limitations on how you can import things and write you components. 
+
+1. Must use default export + named export: The docgen will not be able to pick up a name for the default export so you must also use a named export
+
+```ts
+import * as React from "react";
+
+interface ColorButtonProps {
+  /** Buttons background color */
+  color: "blue" | "green";
+}
+
+/** A button with a configurable background color. */
+export const ColorButton: React.SFC<ColorButtonProps> = props => (
+  <button {...props}>
+);
+
+export default ColorButton;
+```
+
+2. Imports Matter (TypeScript only): The way you import react and use it's types must conform to a few different formate
+
+```tsx
+// To get React.FC to work
+import * as React from "react";
+export const Button: React.FC<ButtonProps> = () => {};
+
+// Without "* as" you can only use like:
+import React, { FC } from "react";
+export const Button: FC<ButtonProps> = () => {};
+```
+
+### Why are default props so hard to get right? (TypeScript only)
+
+The `react` types are magical and you're probably doing too much. Using `React.FC` is the quickest way to ramp up the complexity of your components. Once you use that you lose the `defaultProps` experience.
+
+**Using `React.FC`:**
+
+```tsx
+interface CardProps {
+  size?: 'small' | 'large';
+}
+
+// The type of size will be "string | undefined"
+// You will either have to repeat your default value
+// Or write a helper type the figures out what is defaulted
+const Card: React.FC<CardProps> = ({ size }) => (
+  <div>{size}</div>
+);
+
+Card.defaultProps = {
+  size: 'small'
+};
+
+// Size is optional to the user
+const Usage = () => (
+  <Card />
+)
+```
+
+Without React.FC:
+
+```tsx
+interface CardProps {
+  // Key part right here is to make the defaulted prop not optional
+  // this way in your function it won't be undefined
+  size: 'small' | 'large';
+}
+
+// The type of size will be "string"
+const Card = ({ size }: CardProps) => (
+  <div>{size}</div>
+);
+
+// Typescript can use this defaultProps to determine what is optional
+// for the user of your component.
+Card.defaultProps = {
+  size: 'small'
+};
+
+// Size is optional to the user
+const Usage = () => (
+  <Card />
+)
+```
+
 ## Inspiration
 
 Code heavily inspired by (copied from):
