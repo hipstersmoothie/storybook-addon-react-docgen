@@ -139,7 +139,12 @@ storiesOf('Component', module)
    */
   TableComponent: React.ComponentType,
   /**
-   * Will exclude any respective properties whose name is included in array
+   * Will exclude any respective properties whose name is included in array.
+   * Can also specify absolute propType to exclude (see example below)
+   * Examples: 
+   * excludedPropTypes: ["message"] // propType to exclude
+   * excludedPropTypes: ["MyComponent.message"] // absolute propType
+   * 
    * @default []
    */
   excludedPropTypes: Array<string>,

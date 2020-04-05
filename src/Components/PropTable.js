@@ -52,6 +52,8 @@ const styles = {
   }
 };
 
+const getName = type => type.displayName || type.name;
+
 export const multiLineText = input => {
   if (!input) {
     return input;
@@ -73,13 +75,18 @@ export const multiLineText = input => {
   ));
 };
 
-const determineIncludedPropTypes = (propDefinitions, excludedPropTypes) => {
+const determineIncludedPropTypes = (propDefinitions, excludedPropTypes, type) => {
   if (excludedPropTypes.length === 0) {
     return propDefinitions;
   }
 
+  const name = getName(type);
   return propDefinitions.filter(
-    propDefinition => !excludedPropTypes.includes(propDefinition.property)
+    propDefinition => {
+      const propertyName = propDefinition.property;
+      const propertyNameAbsolute = `${name}.${propertyName}`;
+      return !(excludedPropTypes.includes(propertyName) || excludedPropTypes.includes(propertyNameAbsolute));
+    }
   );
 };
 
@@ -99,7 +106,8 @@ export default function PropTable(props) {
 
   const includedPropDefinitions = determineIncludedPropTypes(
     propDefinitions,
-    excludedPropTypes
+    excludedPropTypes,
+    type
   );
 
   if (includedPropDefinitions.length === 0) {
