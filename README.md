@@ -101,6 +101,14 @@ storiesOf('Component', module)
    * @default []
    */
   propTables: Array<React.ComponentType>,
+  
+  /**
+   * Define custom sorting order for the components specifying component names in the desired order.
+   * Example:
+   * propTablesSortOrder: ["MyComponent", "FooComponent", "AnotherComponent"]
+   * @default []
+   */
+  propTablesSortOrder: string,
   /**
    * Exclude Components from being shown in Prop Tables section
    * Accepts an array of component classes or functions
