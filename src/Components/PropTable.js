@@ -79,6 +79,7 @@ const determineIncludedPropTypes = (propDefinitions, excludedPropTypes, type) =>
   if (excludedPropTypes.length === 0) {
     return propDefinitions;
   }
+
   const name = getName(type);
   return propDefinitions.filter(
     propDefinition => {
