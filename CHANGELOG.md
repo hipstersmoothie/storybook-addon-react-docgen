@@ -1,3 +1,15 @@
+# v1.2.30 (Sun Apr 05 2020)
+
+#### 🐛  Bug Fix
+
+- fix: propTablesExclude to work for forwardRef(FC) [#90](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/90) ([@nischithbm](https://github.com/nischithbm))
+
+#### Authors: 1
+
+- Nischith B.M. ([@nischithbm](https://github.com/nischithbm))
+
+---
+
 # v1.2.29 (Sun Apr 05 2020)
 
 #### 🐛  Bug Fix
