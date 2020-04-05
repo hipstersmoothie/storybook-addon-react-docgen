@@ -42,6 +42,14 @@ export const getProps = (propTables, propTablesExclude, children) => {
     ) {
       return true;
     }
+    
+    if (
+      element.type &&
+      typeof element.type &&
+      element.type.displayName === Component
+    ) {
+      return true;
+    }
 
     return false;
   };
