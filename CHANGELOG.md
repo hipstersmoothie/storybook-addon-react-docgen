@@ -1,3 +1,28 @@
+# v1.2.29 (Sun Apr 05 2020)
+
+#### 🐛  Bug Fix
+
+- feat: absolute propTypes in excludedPropTypes [#91](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/91) ([@nischithbm](https://github.com/nischithbm))
+
+#### 📝  Documentation
+
+- Update README.md [#79](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/79) ([@hipstersmoothie](https://github.com/hipstersmoothie))
+- Add usage docs [#78](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/78) ([@hipstersmoothie](https://github.com/hipstersmoothie))
+- add component filter docs [#77](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/77) ([@hipstersmoothie](https://github.com/hipstersmoothie))
+- add usage guide [#76](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/76) ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+#### 🔩 Dependency Updates
+
+- Update dependency lint-staged to v9.4.1 [#65](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/65) ([@renovate-bot](https://github.com/renovate-bot))
+
+#### Authors: 3
+
+- Nischith B.M. ([@nischithbm](https://github.com/nischithbm))
+- Andrew Lisowski ([@hipstersmoothie](https://github.com/hipstersmoothie))
+- WhiteSource Renovate ([@renovate-bot](https://github.com/renovate-bot))
+
+---
+
 # v1.2.27 (Mon Sep 30 2019)
 
 #### 🐛  Bug Fix
