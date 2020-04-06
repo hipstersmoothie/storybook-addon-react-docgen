@@ -1,3 +1,17 @@
+# v1.2.31 (Mon Apr 06 2020)
+
+#### 🐛  Bug Fix
+
+- feat: support propTablesSortOrder [#94](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/94) ([@nischithbm](https://github.com/nischithbm))
+- feat: support propTablesSortOrder [#1](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/1) ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+#### Authors: 2
+
+- Nischith B.M. ([@nischithbm](https://github.com/nischithbm))
+- Andrew Lisowski ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+---
+
 # v1.2.30 (Sun Apr 05 2020)
 
 #### 🐛  Bug Fix
