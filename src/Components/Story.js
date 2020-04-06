@@ -8,7 +8,7 @@ const getName = type => type.displayName || type.name;
 const getDescription = type =>
   type.__docgenInfo && type.__docgenInfo.description;
 
-export const getProps = (propTables, propTablesExclude, children) => {
+export const getProps = (propTables, propTablesExclude, propTablesSortOrder, children) => {
   const types = new Map();
 
   if (propTables === null) {
@@ -87,7 +87,31 @@ export const getProps = (propTables, propTablesExclude, children) => {
   extract(children);
 
   const array = [...types.keys()];
-  array.sort((a, b) => getName(a) > getName(b));
+  
+  if (propTablesSortOrder && Array.isArray(propTablesSortOrder) && propTablesSortOrder.length > 0) {
+    array.sort((a, b) => {
+      const nameA = getName(a);
+      const nameB = getName(b);
+      const sA = propTablesSortOrder.indexOf(nameA);
+      const sB = propTablesSortOrder.indexOf(nameB);
+      if (sA === -1 && sB === -1) {
+        return nameA.localeCompare(nameB);
+      }
+      
+      if (sA === -1) {
+        return 1;
+      }
+      
+      if (sB === -1) {
+        return -1;
+      }
+      
+      return sA - sB;
+    });
+  }
+  else {
+    array.sort((a, b) => getName(a).localeCompare(getName(b)));
+  }
 
   return array;
 };

@@ -34,6 +34,7 @@ function addPropsTable(storyFn, context, infoOptions) {
     context,
     components: getProps(
       options.propTables,
+      options.propTablesSortOrder,
       options.propTablesExclude,
       storyFn
     ),
@@ -43,6 +44,7 @@ function addPropsTable(storyFn, context, infoOptions) {
         : s => nestedObjectAssign({}, s, options.styles),
     propTables: options.propTables,
     propTablesExclude: options.propTablesExclude,
+    propTablesSortOrder: options.propTablesSortOrder,
     PropTable: makeTableComponent(options.TableComponent),
     maxPropObjectKeys: options.maxPropObjectKeys,
     maxPropArrayLength: options.maxPropArrayLength,
