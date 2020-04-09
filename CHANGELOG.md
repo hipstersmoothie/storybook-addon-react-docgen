@@ -1,3 +1,15 @@
+# v1.2.32 (Thu Apr 09 2020)
+
+#### 🐛  Bug Fix
+
+- handle when both name and displayname are undefined [#96](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/96) ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+#### Authors: 1
+
+- Andrew Lisowski ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+---
+
 # v1.2.31 (Mon Apr 06 2020)
 
 #### 🐛  Bug Fix
