@@ -34,8 +34,8 @@ function addPropsTable(storyFn, context, infoOptions) {
     context,
     components: getProps(
       options.propTables,
-      options.propTablesSortOrder,
       options.propTablesExclude,
+      options.propTablesSortOrder,
       storyFn
     ),
     styles:
