@@ -1,3 +1,15 @@
+# v1.2.33 (Thu May 28 2020)
+
+#### 🐛  Bug Fix
+
+- positional params error [#99](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/99) ([@hainessss](https://github.com/hainessss))
+
+#### Authors: 1
+
+- [@hainessss](https://github.com/hainessss)
+
+---
+
 # v1.2.32 (Thu Apr 09 2020)
 
 #### 🐛  Bug Fix
