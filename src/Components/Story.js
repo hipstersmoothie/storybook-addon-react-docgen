@@ -4,16 +4,11 @@ import React, { Component } from 'react';
 import { polyfill } from 'react-lifecycles-compat';
 import PropTypes from 'prop-types';
 
-const getName = (type) => type.displayName || type.name || '';
-const getDescription = (type) =>
+const getName = type => type.displayName || type.name || '';
+const getDescription = type =>
   type.__docgenInfo && type.__docgenInfo.description;
 
-export const getProps = (
-  propTables,
-  propTablesExclude,
-  propTablesSortOrder,
-  children
-) => {
+export const getProps = ({ propTables, include, exclude, order, children }) => {
   const types = new Map();
 
   if (propTables === null) {
@@ -21,7 +16,7 @@ export const getProps = (
   }
 
   if (propTables) {
-    propTables.forEach((type) => {
+    propTables.forEach(type => {
       types.set(type, true);
     });
   }
@@ -60,31 +55,36 @@ export const getProps = (
   };
 
   // Depth-first traverse and collect types
-  const extract = (innerChildren) => {
-    if (!innerChildren) {
+  const extract = innerChild => {
+    if (!innerChild) {
       return;
     }
 
-    if (Array.isArray(innerChildren)) {
-      innerChildren.forEach(extract);
+    if (Array.isArray(innerChild)) {
+      innerChild.forEach(extract);
       return;
     }
 
-    if (innerChildren.props && innerChildren.props.children) {
-      extract(innerChildren.props.children);
+    if (innerChild.props && innerChild.props.children) {
+      extract(innerChild.props.children);
     }
 
     if (
-      typeof innerChildren === 'string' ||
-      typeof innerChildren.type === 'string' ||
-      (Array.isArray(propTablesExclude) && // Also ignore excluded types
-        propTablesExclude.some((Comp) => propTableCompare(innerChildren, Comp)))
+      typeof innerChild === 'string' ||
+      typeof innerChild.type === 'string' ||
+      (Array.isArray(exclude) && // Also ignore excluded types
+        exclude.some(Comp => propTableCompare(innerChild, Comp)))
     ) {
       return;
     }
 
-    if (innerChildren.type && !types.has(innerChildren.type)) {
-      types.set(innerChildren.type, true);
+    if (innerChild.type && !types.has(innerChild.type)) {
+      if (
+        !include ||
+        include.some(Comp => propTableCompare(innerChild, Comp))
+      ) {
+        types.set(innerChild.type, true);
+      }
     }
   };
 
@@ -93,17 +93,13 @@ export const getProps = (
 
   const array = [...types.keys()];
 
-  if (
-    propTablesSortOrder &&
-    Array.isArray(propTablesSortOrder) &&
-    propTablesSortOrder.length > 0
-  ) {
+  if (order && Array.isArray(order) && order.length > 0) {
     array.sort((a, b) => {
       const nameA = getName(a);
       const nameB = getName(b);
-      const sA = propTablesSortOrder.indexOf(nameA);
-      const sB = propTablesSortOrder.indexOf(nameB);
-      
+      const sA = order.indexOf(nameA);
+      const sB = order.indexOf(nameB);
+
       if (sA === -1 && sB === -1) {
         return nameA.localeCompare(nameB);
       }
@@ -133,19 +129,19 @@ const stylesheetBase = {
     padding: '20px 40px 40px',
     borderRadius: '2px',
     marginTop: '20px',
-    marginBottom: '20px',
+    marginBottom: '20px'
   },
   h1: {
     margin: '20px 0 0 0',
     padding: '0 0 5px 0',
     fontSize: '25px',
-    borderBottom: '1px solid #EEE',
+    borderBottom: '1px solid #EEE'
   },
   propTableHead: {
     margin: '20px 0 0 0',
-    fontSize: 20,
+    fontSize: 20
   },
-  description: {},
+  description: {}
 };
 
 class Story extends Component {
@@ -158,16 +154,16 @@ class Story extends Component {
     maxPropObjectKeys: PropTypes.number.isRequired,
     maxPropArrayLength: PropTypes.number.isRequired,
     maxPropStringLength: PropTypes.number.isRequired,
-    excludedPropTypes: PropTypes.arrayOf(PropTypes.string),
+    excludedPropTypes: PropTypes.arrayOf(PropTypes.string)
   };
 
   static defaultProps = {
     propTables: null,
-    excludedPropTypes: [],
+    excludedPropTypes: []
   };
 
   state = {
-    stylesheet: this.props.styles(stylesheetBase),
+    stylesheet: this.props.styles(stylesheetBase)
   };
 
   _renderInline() {
@@ -188,7 +184,7 @@ class Story extends Component {
       maxPropObjectKeys,
       maxPropArrayLength,
       maxPropStringLength,
-      excludedPropTypes,
+      excludedPropTypes
     } = this.props;
     let { propTables } = this.props;
     const { stylesheet } = this.state;
