@@ -16,11 +16,17 @@ const defaultOptions = {
   maxPropStringLength: 50
 };
 
+const defaultPropTablesExclude = [React.Fragment];
+
 function addPropsTable(storyFn, context, infoOptions) {
   const options = {
     ...defaultOptions,
     ...infoOptions
   };
+  const exclude = [
+    ...defaultPropTablesExclude,
+    ...(options.propTablesExclude || [])
+  ];
 
   // Props.propTables can only be either an array of components or null
   // propTables option is allowed to be set to 'false' (a boolean)
@@ -35,7 +41,7 @@ function addPropsTable(storyFn, context, infoOptions) {
     components: getProps({
       propTables: options.propTables,
       include: options.propTablesInclude,
-      exclude: options.propTablesExclude,
+      exclude,
       order: options.propTablesSortOrder,
       children: storyFn
     }),
@@ -45,7 +51,7 @@ function addPropsTable(storyFn, context, infoOptions) {
         : s => nestedObjectAssign({}, s, options.styles),
     propTables: options.propTables,
     propTablesInclude: options.propTablesInclude,
-    propTablesExclude: options.propTablesExclude,
+    propTablesExclude: exclude,
     propTablesSortOrder: options.propTablesSortOrder,
     PropTable: makeTableComponent(options.TableComponent),
     maxPropObjectKeys: options.maxPropObjectKeys,
