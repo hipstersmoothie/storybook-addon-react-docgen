@@ -1,3 +1,15 @@
+# v1.2.34 (Fri Jun 05 2020)
+
+#### 🐛  Bug Fix
+
+- add "propTablesInclude" to include only the tables for those components [#101](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/101) ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+#### Authors: 1
+
+- Andrew Lisowski ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+---
+
 # v1.2.33 (Thu May 28 2020)
 
 #### 🐛  Bug Fix
