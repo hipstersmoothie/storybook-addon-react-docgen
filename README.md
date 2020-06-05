@@ -101,7 +101,7 @@ storiesOf('Component', module)
    * @default []
    */
   propTables: Array<React.ComponentType>,
-  
+
   /**
    * Define custom sorting order for the components specifying component names in the desired order.
    * Example:
@@ -109,6 +109,12 @@ storiesOf('Component', module)
    * @default []
    */
   propTablesSortOrder: string,
+  /**
+   * Only include prop tables for these components.
+   * Accepts an array of component classes or functions
+   * @default null
+   */
+  propTablesInclude: Array<React.ComponentType | string>,
   /**
    * Exclude Components from being shown in Prop Tables section
    * Accepts an array of component classes or functions
@@ -149,10 +155,10 @@ storiesOf('Component', module)
   /**
    * Will exclude any respective properties whose name is included in array.
    * Can also specify absolute propType to exclude (see example below)
-   * Examples: 
+   * Examples:
    * excludedPropTypes: ["message"] // propType to exclude
    * excludedPropTypes: ["MyComponent.message"] // absolute propType
-   * 
+   *
    * @default []
    */
   excludedPropTypes: Array<string>,
@@ -179,7 +185,7 @@ The TableComponent option allows you to define how the prop table should be rend
 
 ### Nothing shows up, this is broken!
 
-The way that the packages implement docgen for react means that there are some limitations on how you can import things and write you components. 
+The way that the packages implement docgen for react means that there are some limitations on how you can import things and write you components.
 
 1. Must use default export + named export: The docgen will not be able to pick up a name for the default export so you must also use a named export
 
@@ -203,23 +209,22 @@ export default ColorButton;
 
 ```tsx
 // To get React.FC to work
-import * as React from "react";
+import * as React from 'react';
 export const Button: React.FC<ButtonProps> = () => {};
 
 // Without "* as" you can only use like:
-import React, { FC } from "react";
+import React, { FC } from 'react';
 export const Button: FC<ButtonProps> = () => {};
 ```
 
 3. Usage within the story matter: This addon determines what components to display props for by finding all components used in the JSX returned by the story. So if you want prop-types to be displayed for a component, you **must** return that component in the story function.
 
-
 ```tsx
-import React from "react";
-import { Button } from "./Button";
+import React from 'react';
+import { Button } from './Button';
 
 export default {
-  title: "Button"
+  title: 'Button'
 };
 
 /** WILL NOT WORK */
@@ -228,17 +233,16 @@ export default {
 // returned by the story function no props are displayed
 const MyFancyExample = () => {
   const [count, setCount] = React.useState(0);
-  
+
   return (
-    <Button 
-      primary={boolean("primary", false)}
+    <Button
+      primary={boolean('primary', false)}
       onClick={() => setCount(count + 1)}
     >
       "hello: " {count}
     </Button>
-  )
-}
-
+  );
+};
 
 export const BaseStory = () => <MyFancyExample />;
 
@@ -248,16 +252,16 @@ export const BaseStory = () => <MyFancyExample />;
 // get the props types for button.
 export const BaseStory = () => {
   const [count, setCount] = React.useState(0);
-  
+
   return (
-    <Button 
-      primary={boolean("primary", false)}
+    <Button
+      primary={boolean('primary', false)}
       onClick={() => setCount(count + 1)}
     >
       "hello: " {count}
     </Button>
-  )
-}
+  );
+};
 ```
 
 ### Why are default props so hard to get right? (TypeScript only)
@@ -274,18 +278,14 @@ interface CardProps {
 // The type of size will be "string | undefined"
 // You will either have to repeat your default value
 // Or write a helper type the figures out what is defaulted
-const Card: React.FC<CardProps> = ({ size }) => (
-  <div>{size}</div>
-);
+const Card: React.FC<CardProps> = ({ size }) => <div>{size}</div>;
 
 Card.defaultProps = {
   size: 'small'
 };
 
 // Size is optional to the user
-const Usage = () => (
-  <Card />
-)
+const Usage = () => <Card />;
 ```
 
 Without React.FC:
@@ -298,9 +298,7 @@ interface CardProps {
 }
 
 // The type of size will be "string"
-const Card = ({ size }: CardProps) => (
-  <div>{size}</div>
-);
+const Card = ({ size }: CardProps) => <div>{size}</div>;
 
 // Typescript can use this defaultProps to determine what is optional
 // for the user of your component.
@@ -309,9 +307,7 @@ Card.defaultProps = {
 };
 
 // Size is optional to the user
-const Usage = () => (
-  <Card />
-)
+const Usage = () => <Card />;
 ```
 
 ### My components extends from HTML elements and there are way too many props in the panel! How do I get rid of some?

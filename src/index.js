@@ -32,17 +32,19 @@ function addPropsTable(storyFn, context, infoOptions) {
   return {
     info: options.text,
     context,
-    components: getProps(
-      options.propTables,
-      options.propTablesExclude,
-      options.propTablesSortOrder,
-      storyFn
-    ),
+    components: getProps({
+      propTables: options.propTables,
+      include: options.propTablesInclude,
+      exclude: options.propTablesExclude,
+      order: options.propTablesSortOrder,
+      children: storyFn
+    }),
     styles:
       typeof options.styles === 'function'
         ? options.styles
         : s => nestedObjectAssign({}, s, options.styles),
     propTables: options.propTables,
+    propTablesInclude: options.propTablesInclude,
     propTablesExclude: options.propTablesExclude,
     propTablesSortOrder: options.propTablesSortOrder,
     PropTable: makeTableComponent(options.TableComponent),
