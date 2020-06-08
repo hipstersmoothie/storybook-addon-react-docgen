@@ -14,7 +14,7 @@ const styles = {
   }
 };
 
-function indent(breakIntoNewLines, level, isBlock) {
+const indent = (breakIntoNewLines, level, isBlock) => {
   return (
     breakIntoNewLines && (
       <span>
@@ -24,22 +24,22 @@ function indent(breakIntoNewLines, level, isBlock) {
       </span>
     )
   );
-}
+};
 
-function PreviewArray({
+const PreviewArray = ({
   val,
   level,
   maxPropArrayLength,
   maxPropStringLength,
   maxPropsIntoLine
-}) {
+}) => {
   const items = {};
   const breakIntoNewLines = val.length > maxPropsIntoLine;
   val.slice(0, maxPropArrayLength).forEach((item, i) => {
     items[`n${i}`] = (
       <span>
         {indent(breakIntoNewLines, level)}
-        <PropVal
+        <PropValue
           val={item}
           level={level + 1}
           maxPropStringLength={maxPropStringLength}
@@ -66,23 +66,23 @@ function PreviewArray({
       {indent(breakIntoNewLines, level, true)}]
     </span>
   );
-}
+};
 
 PreviewArray.propTypes = {
-  val: PropTypes.any, // eslint-disable-line react/require-default-props
+  val: PropTypes.any,
   maxPropArrayLength: PropTypes.number.isRequired,
   maxPropStringLength: PropTypes.number.isRequired,
   maxPropsIntoLine: PropTypes.number.isRequired,
   level: PropTypes.number.isRequired
 };
 
-function PreviewObject({
+const PreviewObject = ({
   val,
   level,
   maxPropObjectKeys,
   maxPropStringLength,
   maxPropsIntoLine
-}) {
+}) => {
   const names = Object.keys(val);
   const items = {};
   const breakIntoNewLines = names.length > maxPropsIntoLine;
@@ -96,7 +96,7 @@ function PreviewObject({
     );
     items[`c${i}`] = ': ';
     items[`v${i}`] = (
-      <PropVal
+      <PropValue
         val={val[name]}
         level={level + 1}
         maxPropStringLength={maxPropStringLength}
@@ -125,10 +125,9 @@ function PreviewObject({
       {'}'}
     </span>
   );
-}
+};
 
 PreviewObject.propTypes = {
-  // eslint-disable-next-line react/require-default-props
   val: PropTypes.any,
   maxPropObjectKeys: PropTypes.number.isRequired,
   maxPropStringLength: PropTypes.number.isRequired,
@@ -136,7 +135,7 @@ PreviewObject.propTypes = {
   level: PropTypes.number.isRequired
 };
 
-function PropVal(props) {
+const PropValue = props => {
   const {
     level,
     maxPropObjectKeys,
@@ -196,9 +195,9 @@ function PropVal(props) {
   }
 
   return content;
-}
+};
 
-PropVal.defaultProps = {
+PropValue.defaultProps = {
   val: null,
   maxPropObjectKeys: 3,
   maxPropArrayLength: 3,
@@ -207,7 +206,7 @@ PropVal.defaultProps = {
   level: 1
 };
 
-PropVal.propTypes = {
+PropValue.propTypes = {
   val: PropTypes.any,
   maxPropObjectKeys: PropTypes.number,
   maxPropArrayLength: PropTypes.number,
@@ -216,4 +215,4 @@ PropVal.propTypes = {
   level: PropTypes.number
 };
 
-export default PropVal;
+export default PropValue;

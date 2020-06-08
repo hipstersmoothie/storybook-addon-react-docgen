@@ -2,9 +2,14 @@
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=for-the-badge)](https://github.com/prettier/prettier) [![CircleCI](https://img.shields.io/circleci/project/github/hipstersmoothie/storybook-addon-react-docgen/master.svg?style=for-the-badge)](https://circleci.com/gh/hipstersmoothie/storybook-addon-react-docgen) [![npm](https://img.shields.io/npm/v/storybook-addon-react-docgen.svg?style=for-the-badge)](https://www.npmjs.com/package/storybook-addon-react-docgen) [![npm](https://img.shields.io/npm/dt/storybook-addon-react-docgen.svg?style=for-the-badge)](https://www.npmjs.com/package/storybook-addon-react-docgen)
 
-A storybook addon to display react docgen info. This addon is a drop in replacement for the "info" addon's prop table functionality. Rather than rendering with the component it renders in the addons panel. Works with typescript too!
+A storybook addon to display react docgen info.
+This addon is a drop in replacement for the "info" addon's prop table functionality.
+Rather than rendering with the component it renders in the addons panel.
+Works with typescript too!
 
-There exist other addons that do this, but they didn't work in the same way as the `info` addon. This resulted in complicated configuration changes. This plugin aims to be painless to switch to.
+There exist other addons that do this, but they didn't work in the same way as the `info` addon.
+This resulted in complicated configuration changes.
+This plugin aims to be painless to switch to.
 
 ![Example Output](https://github.com/hipstersmoothie/storybook-addon-react-docgen/raw/master/example.png)
 
@@ -16,24 +21,30 @@ yarn add storybook-addon-react-docgen
 
 ## React Docgen Integration
 
-React Docgen is included as part of the @storybook/react package through the use of babel-plugin-react-docgen during babel compile time. When rendering a story with a React component commented in this supported format, the Addon Info description will render the comments above the component declaration and the prop table will display the prop's comment in the description column.
+React Docgen is included as part of the `@storybook/addon-docs` package.
+If you are using `@storybook/addon-docs` then you do not need to set up docgen and can skip the next steps
 
-### Typescript
+### Typescript DocGen
 
-To use this plugin with a typescript project you need to install `react-docgen-typescript-loader`. You can either:
+To use this plugin with a typescript project you need to install [react-docgen-typescript-loader](https://github.com/strothj/react-docgen-typescript-loader) and configure webpack to use it.
 
-1. Install and add `react-docgen-typescript-loader` manually to your storybook webpack config
-2. Use the official [storybook typescript preset](https://www.npmjs.com/package/@storybook/preset-typescript)
+### Javascript DocGen
+
+To use this plugin with a javascript project you need to install [babel-plugin-react-docgen](https://github.com/storybookjs/babel-plugin-react-docgen)
 
 ## Usage
 
-Create or add to a file called `addons.js` in your storybook config.
+Add it in your `main.js` addons":
 
 ```js
-import 'storybook-addon-react-docgen/register';
+module.exports = {
+  stories: ['../stories/**/*.stories.js'],
+  addons: ['@storybook/addon-docs', 'storybook-addon-react-docgen']
+};
 ```
 
-Then add the `withPropsTable` decorator to your `config.js`. You can pass global options here if you want:
+Then add the `withPropsTable` decorator to your `preview.js`.
+You can pass global options here if you want:
 
 ```js
 const { addDecorator } = require('@storybook/react');
@@ -52,22 +63,23 @@ import { storiesOf } from '@storybook/react';
 import Other from './Other';
 import Component from './Component';
 
-storiesOf('Component', module).add(
-  'with some emoji',
-  () => (
-    <Component>
-      <Other />
-    </Component>
-  ),
-  {
-    props: {
-      propTablesExclude: [
-        Other, // the actual component
-        'Other' // the name of the component as a string
-      ]
-    }
-  }
+export default {
+  title: 'Components/Button'
+};
+
+export const WithSomeEmoji = () => (
+  <Component>
+    <Other />
+  </Component>
 );
+
+WithSomeEmoji.parameters: {
+ props: {
+   propTablesExclude: [
+     Other // the actual component
+   ]
+ }
+}
 ```
 
 or for the entire story:
@@ -78,17 +90,22 @@ import { storiesOf } from '@storybook/react';
 import Other from './Other';
 import Component from './Component';
 
-storiesOf('Component', module)
-  .addParameters({
+export default {
+  title: 'Components/Button',
+  parameters: {
     props: {
-      propTablesExclude: [Other]
+      propTablesExclude: [
+        Other // the actual component
+      ]
     }
-  })
-  .add('with some emoji', () => (
-    <Component>
-      <Other />
-    </Component>
-  ));
+  }
+};
+
+export const WithSomeEmoji = () => (
+  <Component>
+    <Other />
+  </Component>
+);
 ```
 
 ## Configuration
