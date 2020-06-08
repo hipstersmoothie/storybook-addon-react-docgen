@@ -1,3 +1,15 @@
+# v1.2.35 (Mon Jun 08 2020)
+
+#### 🐛 Bug Fix
+
+- Use storybook-pretty-props [#102](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/102) ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+#### Authors: 1
+
+- Andrew Lisowski ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+---
+
 # v1.2.34 (Fri Jun 05 2020)
 
 #### 🐛  Bug Fix
