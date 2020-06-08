@@ -1,22 +1,22 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import PrettyPropType from 'storybook-pretty-props';
 
 import PropVal from './PropVal';
-import PrettyPropType from './types/PrettyPropType';
 
 const cell = {
   paddingRight: 20,
   paddingTop: 15,
   paddingBottom: 15,
   verticalAlign: 'top',
-  border: 'none',
+  border: 'none'
 };
 
 const styles = {
   table: {
     width: '100%',
     margin: '2rem 0',
-    borderCollapse: 'collapse',
+    borderCollapse: 'collapse'
   },
   header: {
     paddingRight: 20,
@@ -26,35 +26,35 @@ const styles = {
     fontSize: 14,
     whiteSpace: 'nowrap',
     border: 'none',
-    borderBottom: '1px solid #ccc',
+    borderBottom: '1px solid #ccc'
   },
 
   property: {
     ...cell,
     fontWeight: 500,
-    color: '#FF4400',
+    color: '#FF4400'
   },
   propType: {
     ...cell,
     fontWeight: 500,
     maxWidth: '150px',
     overflow: 'auto',
-    color: '#66BF3C',
+    color: '#66BF3C'
   },
   required: {
-    ...cell,
+    ...cell
   },
   defaultValue: {
-    ...cell,
+    ...cell
   },
   description: {
-    ...cell,
-  },
+    ...cell
+  }
 };
 
-const getName = (type) => type.displayName || type.name || '';
+const getName = type => type.displayName || type.name || '';
 
-export const multiLineText = (input) => {
+export const multiLineText = input => {
   if (!input) {
     return input;
   }
@@ -86,10 +86,10 @@ const determineIncludedPropTypes = (
 
   const name = getName(type);
 
-  return propDefinitions.filter((propDefinition) => {
+  return propDefinitions.filter(propDefinition => {
     const propertyName = propDefinition.property;
     const propertyNameAbsolute = `${name}.${propertyName}`;
-    
+
     return !(
       excludedPropTypes.includes(propertyName) ||
       excludedPropTypes.includes(propertyNameAbsolute)
@@ -104,7 +104,7 @@ export default function PropTable(props) {
     maxPropArrayLength,
     maxPropStringLength,
     propDefinitions,
-    excludedPropTypes,
+    excludedPropTypes
   } = props;
 
   if (!type) {
@@ -124,7 +124,7 @@ export default function PropTable(props) {
   const propValProps = {
     maxPropObjectKeys,
     maxPropArrayLength,
-    maxPropStringLength,
+    maxPropStringLength
   };
 
   return (
@@ -139,7 +139,7 @@ export default function PropTable(props) {
         </tr>
       </thead>
       <tbody>
-        {includedPropDefinitions.map((row) => (
+        {includedPropDefinitions.map(row => (
           <tr key={row.property}>
             <td style={styles.property}>{row.property}</td>
             <td style={styles.propType}>
@@ -166,7 +166,7 @@ PropTable.displayName = 'PropTable';
 PropTable.defaultProps = {
   type: null,
   propDefinitions: [],
-  excludedPropTypes: [],
+  excludedPropTypes: []
 };
 
 PropTable.propTypes = {
@@ -181,7 +181,7 @@ PropTable.propTypes = {
       propType: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
       required: PropTypes.bool,
       description: PropTypes.string,
-      defaultValue: PropTypes.any,
+      defaultValue: PropTypes.any
     })
-  ),
+  )
 };
