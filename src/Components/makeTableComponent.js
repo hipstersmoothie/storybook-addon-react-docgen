@@ -10,7 +10,8 @@ Object.keys(PropTypes).forEach(typeName => {
   PropTypesMap.set(type.isRequired, typeName);
 });
 
-const isNotEmpty = obj => obj && obj.props && Object.keys(obj.props).length > 0;
+const isNotEmpty = component =>
+  component && component.props && Object.keys(component.props).length > 0;
 
 const hasDocgen = type => isNotEmpty(type.__docgenInfo);
 

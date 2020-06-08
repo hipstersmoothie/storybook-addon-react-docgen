@@ -61,7 +61,7 @@ export const getProps = ({ propTables, include, exclude, order, children }) => {
     }
 
     if (Array.isArray(innerChild)) {
-      innerChild.forEach(extract);
+      innerChild.forEach(c => extract(c));
       return;
     }
 

@@ -97,7 +97,7 @@ const determineIncludedPropTypes = (
   });
 };
 
-export default function PropTable(props) {
+const PropTable = props => {
   const {
     type,
     maxPropObjectKeys,
@@ -121,7 +121,7 @@ export default function PropTable(props) {
     return <small>No propTypes defined!</small>;
   }
 
-  const propValProps = {
+  const propValueProps = {
     maxPropObjectKeys,
     maxPropArrayLength,
     maxPropStringLength
@@ -150,7 +150,7 @@ export default function PropTable(props) {
               {row.defaultValue === undefined ? (
                 '-'
               ) : (
-                <PropVal val={row.defaultValue} {...propValProps} />
+                <PropVal val={row.defaultValue} {...propValueProps} />
               )}
             </td>
             <td style={styles.description}>{multiLineText(row.description)}</td>
@@ -159,7 +159,7 @@ export default function PropTable(props) {
       </tbody>
     </table>
   );
-}
+};
 
 PropTable.displayName = 'PropTable';
 
@@ -185,3 +185,5 @@ PropTable.propTypes = {
     })
   )
 };
+
+export default PropTable;
