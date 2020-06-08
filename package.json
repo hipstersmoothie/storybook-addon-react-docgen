@@ -24,7 +24,7 @@
     "build": "babel src -d dist",
     "build:watch": "npm run build -- --watch",
     "prerelease": "npm run build",
-    "release": "auto shipit -w",
+    "release": "auto shipit -vv",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook"
   },
