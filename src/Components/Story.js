@@ -186,7 +186,7 @@ class Story extends Component {
       maxPropStringLength,
       excludedPropTypes
     } = this.props;
-    let { propTables, styles } = this.props;
+    let { PropTable, propTables, styles } = this.props;
 
     if (propTables === null) {
       return null;
@@ -201,7 +201,7 @@ class Story extends Component {
             &ldquo;{getName(type)}&rdquo; Component
           </h2>
           {description && <p style={styles.description}>{description}</p>}
-          <this.props.PropTable
+          <PropTable
             type={type}
             maxPropObjectKeys={maxPropObjectKeys}
             maxPropArrayLength={maxPropArrayLength}

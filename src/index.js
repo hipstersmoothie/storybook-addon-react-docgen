@@ -4,7 +4,6 @@ import nestedObjectAssign from 'nested-object-assign';
 import addons, { makeDecorator } from '@storybook/addons';
 
 import Story, { getProps, stylesheetBase } from './Components/Story';
-import PropTable from './Components/PropTable';
 import makeTableComponent from './Components/makeTableComponent';
 
 const defaultOptions = {

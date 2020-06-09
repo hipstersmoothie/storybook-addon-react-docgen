@@ -22,6 +22,10 @@ export class PropsTable extends React.Component {
     legacy: PropTypes.string
   };
 
+  static defaultProps = {
+    legacy: false
+  };
+
   state = { text: '' };
 
   componentDidMount() {
@@ -57,9 +61,8 @@ export class PropsTable extends React.Component {
       return legacy;
     }
 
-    return Boolean(active && text) ? (
+    return active && text ? (
       <div
-        // eslint-disable-next-line react/no-danger
         style={{ padding: 10, boxSizing: 'border-box', width: '100%' }}
         className="addon-PropsTable-container"
       >
