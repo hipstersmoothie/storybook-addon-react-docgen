@@ -11515,10 +11515,10 @@ store2@^2.7.1:
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.11.2.tgz#a298e5e97b21b3ce7419b732540bc7c79cb007db"
   integrity sha512-TQMKs+C6n9idtzLpxluikmDCYiDJrTbbIGn9LFxMg0BVTu+8JZKSlXTWYRpOFKlfKD5HlDWLVpJJyNGZ2e9l1A==
 
-storybook-pretty-props@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/storybook-pretty-props/-/storybook-pretty-props-1.1.1.tgz#91066f72217b897f6fb4bab41d43e54399111a23"
-  integrity sha512-JAYqbzxBXD1TGbU/h10KQ6iozuRNsz/rUs8NNFGwJS+B2X3rUom787OaEZpM4nhLauUGUf4/UU5F9L2clWe8QA==
+storybook-pretty-props@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/storybook-pretty-props/-/storybook-pretty-props-1.1.2.tgz#6c059a14a1cdadb1455304aa372a28b5d32003ec"
+  integrity sha512-89xf1BZPNKHEUNJjBoymZipjxn2JAWlMeXdAxoDrHTeH39cAqIKyTIprvTP1dFSPdhoiZPRD6g+DhlgrWQ8xxg==
   dependencies:
     prettier "^2.0.5"
 

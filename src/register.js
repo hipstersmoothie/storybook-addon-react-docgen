@@ -23,7 +23,7 @@ export class PropsTable extends React.Component {
   };
 
   static defaultProps = {
-    legacy: false
+    legacy: ''
   };
 
   state = { propData: null };
@@ -59,6 +59,10 @@ export class PropsTable extends React.Component {
 
     if (legacy) {
       return legacy;
+    }
+
+    if (typeof propData === 'string') {
+      return null;
     }
 
     return active && propData ? (
