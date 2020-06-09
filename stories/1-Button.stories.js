@@ -19,3 +19,11 @@ export const Emoji = () => (
     </span>
   </Button>
 );
+
+export const Fragment = () => {
+  return (
+    <>
+      <Button onClick={action('clicked')}>Button in Fragment</Button>
+    </>
+  );
+};

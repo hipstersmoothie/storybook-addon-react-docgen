@@ -36,7 +36,9 @@ function addPropsTable(storyFn, context, infoOptions) {
       exclude: options.propTablesExclude,
       order: options.propTablesSortOrder,
       children: storyFn
-    }).map(c => ({ ...c })),
+    })
+      .map(c => ({ ...c }))
+      .filter(c => c && Object.keys(c).length),
     styles:
       typeof options.styles === 'function'
         ? options.styles
