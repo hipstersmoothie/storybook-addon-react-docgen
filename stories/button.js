@@ -6,7 +6,7 @@ export const Button = props => <button {...props} />;
 Button.propTypes = {
   /** A action for the button to take */
   action: PropTypes.string,
-  /* A made-up property to test minimizing/expanding enum list */
+  /** A made-up property to test minimizing/expanding enum list */
   label: PropTypes.oneOf([
     'a',
     'b',
