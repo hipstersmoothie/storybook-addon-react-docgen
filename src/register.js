@@ -26,7 +26,7 @@ export class PropsTable extends React.Component {
     legacy: false
   };
 
-  state = { text: '' };
+  state = { propData: null };
 
   componentDidMount() {
     const { channel, api } = this.props;
@@ -49,24 +49,24 @@ export class PropsTable extends React.Component {
     );
   }
 
-  onAddPropsTable = text => {
-    this.setState({ text });
+  onAddPropsTable = propData => {
+    this.setState({ propData });
   };
 
   render() {
     const { active, legacy } = this.props;
-    const { text } = this.state;
+    const { propData } = this.state;
 
     if (legacy) {
       return legacy;
     }
 
-    return active && text ? (
+    return active && propData ? (
       <div
         style={{ padding: 10, boxSizing: 'border-box', width: '100%' }}
         className="addon-PropsTable-container"
       >
-        <Story {...text} />
+        <Story {...propData} />
       </div>
     ) : null;
   }
