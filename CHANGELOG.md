@@ -1,3 +1,15 @@
+# v1.2.37 (Tue Jun 09 2020)
+
+#### 🐛 Bug Fix
+
+- fix: switching between stories exception [#105](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/105) ([@petermikitsh](https://github.com/petermikitsh))
+
+#### Authors: 1
+
+- Peter Mikitsh ([@petermikitsh](https://github.com/petermikitsh))
+
+---
+
 # v1.2.36 (Tue Jun 09 2020)
 
 :tada: This release contains work from a new contributor! :tada:
