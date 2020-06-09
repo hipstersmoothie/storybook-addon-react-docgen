@@ -170,7 +170,7 @@ PropTable.defaultProps = {
 };
 
 PropTable.propTypes = {
-  type: PropTypes.func,
+  type: PropTypes.object,
   maxPropObjectKeys: PropTypes.number.isRequired,
   maxPropArrayLength: PropTypes.number.isRequired,
   maxPropStringLength: PropTypes.number.isRequired,

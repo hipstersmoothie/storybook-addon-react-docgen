@@ -3,13 +3,11 @@ import ReactDOM from 'react-dom/server';
 import nestedObjectAssign from 'nested-object-assign';
 import addons, { makeDecorator } from '@storybook/addons';
 
-import Story, { getProps } from './Components/Story';
-import PropTable from './Components/PropTable';
+import Story, { getProps, stylesheetBase } from './Components/Story';
 import makeTableComponent from './Components/makeTableComponent';
 
 const defaultOptions = {
   propTables: [],
-  TableComponent: PropTable,
   maxPropsIntoLine: 3,
   maxPropObjectKeys: 3,
   maxPropArrayLength: 3,
@@ -38,16 +36,18 @@ function addPropsTable(storyFn, context, infoOptions) {
       exclude: options.propTablesExclude,
       order: options.propTablesSortOrder,
       children: storyFn
-    }),
+    }).map(c => ({ ...c })),
     styles:
       typeof options.styles === 'function'
         ? options.styles
-        : s => nestedObjectAssign({}, s, options.styles),
-    propTables: options.propTables,
+        : nestedObjectAssign({}, stylesheetBase, options.styles),
+    propTables: options.propTables.map(c => ({ ...c })),
     propTablesInclude: options.propTablesInclude,
     propTablesExclude: options.propTablesExclude,
     propTablesSortOrder: options.propTablesSortOrder,
-    PropTable: makeTableComponent(options.TableComponent),
+    ...(options.TableComponent && {
+      PropTable: makeTableComponent(options.TableComponent)
+    }),
     maxPropObjectKeys: options.maxPropObjectKeys,
     maxPropArrayLength: options.maxPropArrayLength,
     maxPropsIntoLine: options.maxPropsIntoLine,
@@ -73,10 +73,15 @@ export const withPropsTable = makeDecorator({
     const content = getStory(context);
     const response = addPropsTable(content, context, mergedOptions);
 
-    channel.emit(
-      'storybook/PropsTable/add_PropsTable',
-      ReactDOM.renderToString(<Story {...response}>{content}</Story>)
-    );
+    const shouldLegacyRender = Boolean(mergedOptions.TableComponent);
+
+    if (shouldLegacyRender) {
+      channel.emit('storybook/PropsTable/add_PropsTable', {
+        legacy: ReactDOM.renderToString(<Story {...response} />)
+      });
+    } else {
+      channel.emit('storybook/PropsTable/add_PropsTable', response);
+    }
 
     return content;
   }
