@@ -1,3 +1,19 @@
+# v1.2.36 (Tue Jun 09 2020)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Peter Mikitsh ([@petermikitsh](https://github.com/petermikitsh)), for all your work!
+
+#### 🐛 Bug Fix
+
+- feat: interactive props panel [#104](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/104) ([@petermikitsh](https://github.com/petermikitsh))
+
+#### Authors: 1
+
+- Peter Mikitsh ([@petermikitsh](https://github.com/petermikitsh))
+
+---
+
 # v1.2.35 (Mon Jun 08 2020)
 
 #### 🐛 Bug Fix
