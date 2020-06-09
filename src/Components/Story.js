@@ -3,6 +3,8 @@
 import React, { Component } from 'react';
 import { polyfill } from 'react-lifecycles-compat';
 import PropTypes from 'prop-types';
+import PropTable from './PropTable';
+import makeTableComponent from './makeTableComponent';
 
 const getName = type => type.displayName || type.name || '';
 const getDescription = type =>
@@ -121,7 +123,7 @@ export const getProps = ({ propTables, include, exclude, order, children }) => {
   return array;
 };
 
-const stylesheetBase = {
+export const stylesheetBase = {
   infoBody: {
     fontWeight: 300,
     lineHeight: 1.45,
@@ -148,8 +150,9 @@ class Story extends Component {
   static displayName = 'Story';
 
   static propTypes = {
+    PropTable: PropTypes.func,
     propTables: PropTypes.arrayOf(PropTypes.func),
-    styles: PropTypes.func.isRequired,
+    styles: PropTypes.object.isRequired,
     components: PropTypes.array.isRequired,
     maxPropObjectKeys: PropTypes.number.isRequired,
     maxPropArrayLength: PropTypes.number.isRequired,
@@ -158,21 +161,18 @@ class Story extends Component {
   };
 
   static defaultProps = {
+    PropTable: makeTableComponent(PropTable),
     propTables: null,
     excludedPropTypes: []
   };
 
-  state = {
-    stylesheet: this.props.styles(stylesheetBase)
-  };
-
   _renderInline() {
-    const { stylesheet } = this.state;
+    const { styles } = this.props;
 
     return (
       <div>
-        <div style={stylesheet.infoPage}>
-          <div style={stylesheet.infoBody}>{this._getPropTables()}</div>
+        <div style={styles.infoPage}>
+          <div style={styles.infoBody}>{this._getPropTables()}</div>
         </div>
       </div>
     );
@@ -186,8 +186,7 @@ class Story extends Component {
       maxPropStringLength,
       excludedPropTypes
     } = this.props;
-    let { propTables } = this.props;
-    const { stylesheet } = this.state;
+    let { propTables, styles } = this.props;
 
     if (propTables === null) {
       return null;
@@ -198,10 +197,10 @@ class Story extends Component {
       return (
         // eslint-disable-next-line react/no-array-index-key
         <div key={`${getName(type)}_${i}`}>
-          <h2 style={stylesheet.propTableHead}>
+          <h2 style={styles.propTableHead}>
             &ldquo;{getName(type)}&rdquo; Component
           </h2>
-          {description && <p style={stylesheet.description}>{description}</p>}
+          {description && <p style={styles.description}>{description}</p>}
           <this.props.PropTable
             type={type}
             maxPropObjectKeys={maxPropObjectKeys}
@@ -219,7 +218,7 @@ class Story extends Component {
 
     return (
       <div>
-        <h1 style={stylesheet.h1}>Prop Types</h1>
+        <h1 style={styles.h1}>Prop Types</h1>
         {propTables}
       </div>
     );

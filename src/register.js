@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import addons from '@storybook/addons';
 import { STORY_CHANGED } from '@storybook/core-events';
+import Story from './Components/Story';
 
 export class PropsTable extends React.Component {
   static propTypes = {
@@ -17,7 +18,8 @@ export class PropsTable extends React.Component {
       off: PropTypes.func,
       getQueryParam: PropTypes.func,
       setQueryParams: PropTypes.func
-    }).isRequired
+    }).isRequired,
+    legacy: PropTypes.string
   };
 
   state = { text: '' };
@@ -48,16 +50,21 @@ export class PropsTable extends React.Component {
   };
 
   render() {
-    const { active } = this.props;
+    const { active, legacy } = this.props;
     const { text } = this.state;
 
-    return active ? (
+    if (legacy) {
+      return legacy;
+    }
+
+    return Boolean(active && text) ? (
       <div
         // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: text }}
         style={{ padding: 10, boxSizing: 'border-box', width: '100%' }}
         className="addon-PropsTable-container"
-      />
+      >
+        <Story {...text} />
+      </div>
     ) : null;
   }
 }
