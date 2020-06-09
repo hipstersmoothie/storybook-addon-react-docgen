@@ -23,7 +23,7 @@ export class PropsTable extends React.Component {
   };
 
   static defaultProps = {
-    legacy: false
+    legacy: ''
   };
 
   state = { propData: null };
@@ -61,7 +61,7 @@ export class PropsTable extends React.Component {
       return legacy;
     }
 
-    return active && propData ? (
+    return active && propData && typeof propData !== 'string' ? (
       <div
         style={{ padding: 10, boxSizing: 'border-box', width: '100%' }}
         className="addon-PropsTable-container"

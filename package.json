@@ -106,7 +106,7 @@
     "prop-types": "^15.6.2",
     "react-addons-create-fragment": "^15.6.2",
     "react-lifecycles-compat": "^3.0.4",
-    "storybook-pretty-props": "^1.1.1"
+    "storybook-pretty-props": "^1.1.2"
   },
   "auto": {
     "extends": "hipstersmoothie",
