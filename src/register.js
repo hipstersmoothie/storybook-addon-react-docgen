@@ -61,11 +61,7 @@ export class PropsTable extends React.Component {
       return legacy;
     }
 
-    if (typeof propData === 'string') {
-      return null;
-    }
-
-    return active && propData ? (
+    return active && typeof propData === 'object' ? (
       <div
         style={{ padding: 10, boxSizing: 'border-box', width: '100%' }}
         className="addon-PropsTable-container"
