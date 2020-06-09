@@ -6,7 +6,11 @@ import PropTypes from 'prop-types';
 import PropTable from './PropTable';
 import makeTableComponent from './makeTableComponent';
 
-const getName = type => type.displayName || type.name || '';
+const getName = type =>
+  (type.__docgenInfo && type.__docgenInfo.displayName) ||
+  type.displayName ||
+  type.name ||
+  '';
 const getDescription = type =>
   type.__docgenInfo && type.__docgenInfo.description;
 
