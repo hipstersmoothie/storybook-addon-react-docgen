@@ -1,3 +1,15 @@
+# v1.2.38 (Wed Jun 10 2020)
+
+#### 🐛 Bug Fix
+
+- chore: filter React Fragments [#106](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/106) ([@petermikitsh](https://github.com/petermikitsh))
+
+#### Authors: 1
+
+- Peter Mikitsh ([@petermikitsh](https://github.com/petermikitsh))
+
+---
+
 # v1.2.37 (Tue Jun 09 2020)
 
 #### 🐛 Bug Fix
