@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import createFragment from 'react-addons-create-fragment';
+import { DisplayOptions } from '../types';
 
-const styles = {
+const styles: Record<string, React.CSSProperties> = {
   default: {
     color: '#1EA7FD',
     fontWeight: 700,
@@ -14,17 +13,26 @@ const styles = {
   }
 };
 
-const indent = (breakIntoNewLines, level, isBlock) => {
-  return (
-    breakIntoNewLines && (
-      <span>
-        <br />
-        {`${new Array(level).join('  ')}  `}
-        {!isBlock && '  '}
-      </span>
-    )
+const indent = (breakIntoNewLines: boolean, level: number, isBlock?: boolean) =>
+  breakIntoNewLines && (
+    <span>
+      <br />
+      {`${new Array(level).join('  ')}  `}
+      {!isBlock && '  '}
+    </span>
   );
+
+type PreviewProps<T> = Pick<
+  DisplayOptions,
+  'maxPropArrayLength' | 'maxPropObjectKeys' | 'maxPropStringLength' | 'maxPropsIntoLine'
+> & {
+  val: T;
+  level?: number;
 };
+
+type PreviewArrayProps = Required<
+  Omit<PreviewProps<any[]>, 'maxPropObjectKeys'>
+>;
 
 const PreviewArray = ({
   val,
@@ -32,9 +40,10 @@ const PreviewArray = ({
   maxPropArrayLength,
   maxPropStringLength,
   maxPropsIntoLine
-}) => {
-  const items = {};
+}: PreviewArrayProps) => {
+  const items: Record<string, React.ReactNode> = {};
   const breakIntoNewLines = val.length > maxPropsIntoLine;
+
   val.slice(0, maxPropArrayLength).forEach((item, i) => {
     items[`n${i}`] = (
       <span>
@@ -49,11 +58,12 @@ const PreviewArray = ({
     );
     items[`c${i}`] = ',';
   });
+
   if (val.length > maxPropArrayLength) {
     items.last = (
       <span>
         {indent(breakIntoNewLines, level)}
-        {'…'}
+        …
       </span>
     );
   } else {
@@ -62,19 +72,15 @@ const PreviewArray = ({
 
   return (
     <span style={styles.default}>
-      [{createFragment(items)}
+      {items}
       {indent(breakIntoNewLines, level, true)}]
     </span>
   );
 };
 
-PreviewArray.propTypes = {
-  val: PropTypes.any,
-  maxPropArrayLength: PropTypes.number.isRequired,
-  maxPropStringLength: PropTypes.number.isRequired,
-  maxPropsIntoLine: PropTypes.number.isRequired,
-  level: PropTypes.number.isRequired
-};
+type PreviewObjectProps = Required<
+  Omit<PreviewProps<Record<string, any>>, 'maxPropArrayLength'>
+>;
 
 const PreviewObject = ({
   val,
@@ -82,9 +88,9 @@ const PreviewObject = ({
   maxPropObjectKeys,
   maxPropStringLength,
   maxPropsIntoLine
-}) => {
+}: PreviewObjectProps) => {
   const names = Object.keys(val);
-  const items = {};
+  const items: Record<string, React.ReactNode> = {};
   const breakIntoNewLines = names.length > maxPropsIntoLine;
 
   names.slice(0, maxPropObjectKeys).forEach((name, i) => {
@@ -110,7 +116,7 @@ const PreviewObject = ({
     items.rest = (
       <span>
         {indent(breakIntoNewLines, level)}
-        {'…'}
+        …
       </span>
     );
   } else {
@@ -120,28 +126,20 @@ const PreviewObject = ({
   return (
     <span style={styles.default}>
       {'{'}
-      {createFragment(items)}
+      {items}
       {indent(breakIntoNewLines, level, true)}
-      {'}'}
+      {'}?'}
     </span>
   );
 };
 
-PreviewObject.propTypes = {
-  val: PropTypes.any,
-  maxPropObjectKeys: PropTypes.number.isRequired,
-  maxPropStringLength: PropTypes.number.isRequired,
-  maxPropsIntoLine: PropTypes.number.isRequired,
-  level: PropTypes.number.isRequired
-};
-
-const PropValue = props => {
+const PropValue = (props: PreviewProps<any>) => {
   const {
-    level,
-    maxPropObjectKeys,
-    maxPropArrayLength,
-    maxPropStringLength,
-    maxPropsIntoLine
+    level = 1,
+    maxPropObjectKeys = 3,
+    maxPropArrayLength = 3,
+    maxPropStringLength = 50,
+    maxPropsIntoLine = 3
   } = props;
   let { val } = props;
   let content = null;
@@ -177,11 +175,10 @@ const PropValue = props => {
   } else if (typeof val !== 'object') {
     content = <span>…</span>;
   } else if (React.isValidElement(val)) {
-    content = (
-      <span style={styles.default}>
-        {`<${val.type.displayName || val.type.name || val.type} />`}
-      </span>
-    );
+    // @ts-expect-error
+    const name = val.displayName || val.name || val;
+
+    content = <span style={styles.default}>{`<${name} />`}</span>;
   } else {
     content = (
       <PreviewObject
@@ -195,24 +192,6 @@ const PropValue = props => {
   }
 
   return content;
-};
-
-PropValue.defaultProps = {
-  val: null,
-  maxPropObjectKeys: 3,
-  maxPropArrayLength: 3,
-  maxPropStringLength: 50,
-  maxPropsIntoLine: 3,
-  level: 1
-};
-
-PropValue.propTypes = {
-  val: PropTypes.any,
-  maxPropObjectKeys: PropTypes.number,
-  maxPropArrayLength: PropTypes.number,
-  maxPropStringLength: PropTypes.number,
-  maxPropsIntoLine: PropTypes.number,
-  level: PropTypes.number
 };
 
 export default PropValue;

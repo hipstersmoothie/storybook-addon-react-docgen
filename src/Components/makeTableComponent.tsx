@@ -1,30 +1,40 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import * as PropTypes from 'prop-types';
+import { PropTableProps } from './PropTable';
+import { DocgenInfo, Component, Property } from '../types';
 
-const PropTypesMap = new Map();
+const PropTypesMap = new Map<typeof PropTypes[keyof typeof PropTypes] | PropTypes.Validator<any>, string>();
 
 Object.keys(PropTypes).forEach(typeName => {
-  const type = PropTypes[typeName];
+  const type = PropTypes[typeName as keyof typeof PropTypes];
 
   PropTypesMap.set(type, typeName);
-  PropTypesMap.set(type.isRequired, typeName);
+
+
+  if (typeof type === 'function' && 'isRequired' in type && type.isRequired) {
+    PropTypesMap.set(type.isRequired, typeName);
+  }
 });
 
-const isNotEmpty = component =>
-  component && component.props && Object.keys(component.props).length > 0;
+const isNotEmpty = (component?: DocgenInfo) =>
+  component?.props && Object.keys(component.props).length > 0;
 
-const hasDocgen = type => isNotEmpty(type.__docgenInfo);
+const hasDocgen = (type: Component) => isNotEmpty(type.__docgenInfo);
 
-const propsFromDocgen = type => {
-  const props = {};
-  const docgenInfoProps = type.__docgenInfo.props;
+const propsFromDocgen = (type: Component) => {
+  const props: Record<string, Property> = {};
+  const docgenInfoProps = type.__docgenInfo?.props || {};
   const defaults = type.defaultProps || {};
 
   Object.keys(docgenInfoProps).forEach(property => {
     const docgenInfoProp = docgenInfoProps[property];
     const defaultValueDesc =
       docgenInfoProp.defaultValue || { value: defaults[property] } || {};
-    const propType = docgenInfoProp.flowType || docgenInfoProp.type || 'other';
+    const propType = docgenInfoProp.flowType || docgenInfoProp.type;
+
+    if (!propType) {
+      return;
+    }
 
     props[property] = {
       property,
@@ -38,26 +48,22 @@ const propsFromDocgen = type => {
   return props;
 };
 
-const propsFromPropTypes = type => {
-  const props = {};
+const propsFromPropTypes = (type: Component) => {
+  const props: Record<string, Property> = {};
 
   if (type.propTypes) {
     Object.keys(type.propTypes).forEach(property => {
       const typeInfo = type.propTypes[property];
       const required = typeInfo.isRequired === undefined;
-      const docgenInfo =
-        type.__docgenInfo &&
-        type.__docgenInfo.props &&
-        type.__docgenInfo.props[property];
-      const description = docgenInfo ? docgenInfo.description : null;
-      let propType = PropTypesMap.get(typeInfo) || 'other';
+      const docgenProp = type.__docgenInfo?.props?.[property];
+      const description = docgenProp ? docgenProp.description : undefined;
+      let propType = PropTypesMap.get(typeInfo);
 
-      if (propType === 'other') {
-        if (docgenInfo && docgenInfo.type) {
-          propType = docgenInfo.type.name;
-        }
+      if (!propType && docgenProp?.type) {
+        propType = docgenProp.type.name;
       }
 
+      // @ts-expect-error
       props[property] = { property, propType, required, description };
     });
   }
@@ -81,9 +87,8 @@ const propsFromPropTypes = type => {
   return props;
 };
 
-export default function makeTableComponent(Component) {
-  return props => {
-    // eslint-disable-next-line react/prop-types
+export default function makeTableComponent(Component: React.ElementType) {
+  return (props: Omit<PropTableProps, 'propDefinitions'>) => {
     const { type } = props;
 
     if (!type) {
