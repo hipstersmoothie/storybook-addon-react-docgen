@@ -1,10 +1,11 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import PrettyPropType from 'storybook-pretty-props';
 
 import PropVal from './PropVal';
+import { getName } from './utils';
+import { Component, Property, DisplayOptions } from '../types';
 
-const cell = {
+const cell: React.CSSProperties = {
   paddingRight: 20,
   paddingTop: 15,
   paddingBottom: 15,
@@ -12,7 +13,7 @@ const cell = {
   border: 'none'
 };
 
-const styles = {
+const styles: Record<string, React.CSSProperties> = {
   table: {
     width: '100%',
     margin: '2rem 0',
@@ -52,9 +53,7 @@ const styles = {
   }
 };
 
-const getName = type => type.displayName || type.name || '';
-
-export const multiLineText = input => {
+export const multiLineText = (input?: string) => {
   if (!input) {
     return input;
   }
@@ -76,9 +75,9 @@ export const multiLineText = input => {
 };
 
 const determineIncludedPropTypes = (
-  propDefinitions,
-  excludedPropTypes,
-  type
+  propDefinitions: Property[],
+  excludedPropTypes: string[],
+  type: Component
 ) => {
   if (excludedPropTypes.length === 0) {
     return propDefinitions;
@@ -97,14 +96,19 @@ const determineIncludedPropTypes = (
   });
 };
 
-const PropTable = props => {
+export type PropTableProps = DisplayOptions & {
+  type?: Component;
+  propDefinitions: Property[];
+};
+
+const PropTable = (props: PropTableProps) => {
   const {
     type,
     maxPropObjectKeys,
     maxPropArrayLength,
     maxPropStringLength,
-    propDefinitions,
-    excludedPropTypes
+    propDefinitions = [],
+    excludedPropTypes = []
   } = props;
 
   if (!type) {
@@ -159,31 +163,6 @@ const PropTable = props => {
       </tbody>
     </table>
   );
-};
-
-PropTable.displayName = 'PropTable';
-
-PropTable.defaultProps = {
-  type: null,
-  propDefinitions: [],
-  excludedPropTypes: []
-};
-
-PropTable.propTypes = {
-  type: PropTypes.object,
-  maxPropObjectKeys: PropTypes.number.isRequired,
-  maxPropArrayLength: PropTypes.number.isRequired,
-  maxPropStringLength: PropTypes.number.isRequired,
-  excludedPropTypes: PropTypes.arrayOf(PropTypes.string),
-  propDefinitions: PropTypes.arrayOf(
-    PropTypes.shape({
-      property: PropTypes.string.isRequired,
-      propType: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-      required: PropTypes.bool,
-      description: PropTypes.string,
-      defaultValue: PropTypes.any
-    })
-  )
 };
 
 export default PropTable;

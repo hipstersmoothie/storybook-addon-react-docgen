@@ -1,0 +1,22 @@
+{
+  "include": ["src/**/*", "typings/**/*"],
+  "compilerOptions": {
+    "declaration": true,
+    "lib": ["es2017", "dom"],
+    "jsx": "react",
+    "moduleResolution": "node",
+    // "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "allowJs": true,
+    "importHelpers": true,
+    "typeRoots": ["src/types/", "node_modules/@types/"]
+  }
+}
