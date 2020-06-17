@@ -24,7 +24,7 @@
     "build": "babel --extensions \".ts,.tsx,.js\" src -d dist",
     "build:types": "tsc",
     "build:watch": "npm run build -- --watch",
-    "prerelease": "npm run build",
+    "prerelease": "npm run build && npm run build:types",
     "release": "auto shipit -vv",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook"
