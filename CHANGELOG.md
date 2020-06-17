@@ -1,3 +1,15 @@
+# v1.2.39 (Wed Jun 17 2020)
+
+#### 🐛 Bug Fix
+
+- Typescript Rewrite [#110](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/110) ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+#### Authors: 1
+
+- Andrew Lisowski ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+---
+
 # v1.2.38 (Wed Jun 10 2020)
 
 #### 🐛 Bug Fix
