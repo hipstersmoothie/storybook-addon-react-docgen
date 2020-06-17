@@ -4,6 +4,7 @@
   "description": "A storybook addon to display react docgen info.",
   "main": "dist/index.js",
   "source": "index.js",
+  "typings": "dist/index.d.ts",
   "author": {
     "name": "Andrew Lisowski",
     "email": "lisowski54@gmail.com"
@@ -21,8 +22,10 @@
   },
   "scripts": {
     "lint": "xo --ignore stories",
-    "build": "babel src -d dist",
-    "build:watch": "npm run build -- --watch",
+    "build:js": "babel src -d dist",
+    "build:type": "mkdir -p dist && cp src/index.d.ts dist/index.d.ts",
+    "build": "concurrently -n JS,TYPE \"npm run build:js\" \"npm run build:type\"",
+    "build:watch": "concurrently -n JS,TYPE \"npm run build:js -- --watch\" \"chokidar --initial 'src/index.d.ts' -c 'npm run build:type'\"",
     "prerelease": "npm run build",
     "release": "auto shipit -vv",
     "storybook": "start-storybook -p 6006",
@@ -48,6 +51,8 @@
     "babel-eslint": "10.0.3",
     "babel-loader": "^8.1.0",
     "babel-plugin-add-module-exports": "1.0.2",
+    "chokidar-cli": "^2.1.0",
+    "concurrently": "^5.2.0",
     "eslint": "^7.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-xo-react": "^0.23.0",
