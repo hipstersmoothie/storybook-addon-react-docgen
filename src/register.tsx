@@ -35,7 +35,7 @@ export const PropsTable = (props: PropsTableProps) => {
         dataSet
       );
     };
-  });
+  }, [dataSet]);
 
   const { active, legacy } = props;
 

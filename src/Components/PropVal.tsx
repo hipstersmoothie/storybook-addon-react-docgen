@@ -17,14 +17,17 @@ const indent = (breakIntoNewLines: boolean, level: number, isBlock?: boolean) =>
   breakIntoNewLines && (
     <span>
       <br />
-      {`${new Array(level).join('  ')}  `}
+      <span style={{ width: level * 10, display: 'inline-block' }} />
       {!isBlock && '  '}
     </span>
   );
 
 type PreviewProps<T> = Pick<
   DisplayOptions,
-  'maxPropArrayLength' | 'maxPropObjectKeys' | 'maxPropStringLength' | 'maxPropsIntoLine'
+  | 'maxPropArrayLength'
+  | 'maxPropObjectKeys'
+  | 'maxPropStringLength'
+  | 'maxPropsIntoLine'
 > & {
   val: T;
   level?: number;
@@ -60,20 +63,17 @@ const PreviewArray = ({
   });
 
   if (val.length > maxPropArrayLength) {
-    items.last = (
-      <span>
-        {indent(breakIntoNewLines, level)}
-        …
-      </span>
-    );
+    items.last = <span>{indent(breakIntoNewLines, level)}…</span>;
   } else {
     delete items[`c${val.length - 1}`];
   }
 
   return (
     <span style={styles.default}>
-      {items}
-      {indent(breakIntoNewLines, level, true)}]
+      [
+      {Object.values(items)}
+      {indent(breakIntoNewLines, level, true)}
+      ]
     </span>
   );
 };
@@ -91,7 +91,9 @@ const PreviewObject = ({
 }: PreviewObjectProps) => {
   const names = Object.keys(val);
   const items: Record<string, React.ReactNode> = {};
-  const breakIntoNewLines = names.length > maxPropsIntoLine;
+  const breakIntoNewLines =
+    names.length > maxPropsIntoLine ||
+    Object.values(val).find(v => typeof v === 'object');
 
   names.slice(0, maxPropObjectKeys).forEach((name, i) => {
     items[`k${i}`] = (
@@ -113,23 +115,20 @@ const PreviewObject = ({
   });
 
   if (names.length > maxPropObjectKeys) {
-    items.rest = (
-      <span>
-        {indent(breakIntoNewLines, level)}
-        …
-      </span>
-    );
+    items.rest = <span>{indent(breakIntoNewLines, level)}…</span>;
   } else {
     delete items[`m${names.length - 1}`];
   }
 
   return (
-    <span style={styles.default}>
-      {'{'}
-      {items}
-      {indent(breakIntoNewLines, level, true)}
-      {'}?'}
-    </span>
+    <>
+      {'{ '}
+      <span style={styles.default}>
+        {Object.values(items)}
+        {indent(breakIntoNewLines, level, true)}
+      </span>
+      {' }'}
+    </>
   );
 };
 
