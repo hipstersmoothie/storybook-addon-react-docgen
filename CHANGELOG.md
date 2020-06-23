@@ -1,3 +1,15 @@
+# v1.2.40 (Tue Jun 23 2020)
+
+#### 🐛 Bug Fix
+
+- improve complex object default prop rendering [#111](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/111) ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+#### Authors: 1
+
+- Andrew Lisowski ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+---
+
 # v1.2.39 (Wed Jun 17 2020)
 
 #### 🐛 Bug Fix
