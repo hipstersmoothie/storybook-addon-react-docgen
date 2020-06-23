@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-react-docgen",
-  "version": "1.2.39",
+  "version": "1.2.40",
   "description": "A storybook addon to display react docgen info.",
   "main": "dist/index.js",
   "source": "index.js",
