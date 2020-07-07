@@ -1,3 +1,15 @@
+# v1.2.41 (Tue Jul 07 2020)
+
+#### 🐛 Bug Fix
+
+- handle component supplied as props [#112](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/112) ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+#### Authors: 1
+
+- Andrew Lisowski ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+---
+
 # v1.2.40 (Tue Jun 23 2020)
 
 #### 🐛 Bug Fix
