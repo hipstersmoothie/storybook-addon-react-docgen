@@ -89,6 +89,18 @@ export const getProps = ({
       extract(innerChild.props.children);
     }
 
+    if (innerChild.props) {
+      Object.values(innerChild.props).forEach((value: any) => {
+        const values = Array.isArray(value) ? value : [value];
+
+        values.forEach((v: any) => {
+          if (typeof v === 'object' && v.type) {
+            extract(v);
+          }
+        });
+      });
+    }
+
     if (
       typeof innerChild === 'string' ||
       typeof innerChild.type === 'string' ||
