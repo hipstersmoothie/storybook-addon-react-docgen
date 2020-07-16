@@ -94,7 +94,7 @@ export const getProps = ({
         const values = Array.isArray(value) ? value : [value];
 
         values.forEach((v: any) => {
-          if (typeof v === 'object' && v.type) {
+          if (Object.is(v) && v.type) {
             extract(v);
           }
         });
