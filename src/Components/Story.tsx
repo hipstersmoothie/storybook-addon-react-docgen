@@ -94,7 +94,7 @@ export const getProps = ({
         const values = Array.isArray(value) ? value : [value];
 
         values.forEach((v: any) => {
-          if (Object.is(v) && v.type) {
+          if (typeof v === 'object' && v !== null && v.type) {
             extract(v);
           }
         });
@@ -253,7 +253,7 @@ const getPropTables = (
 };
 
 const Story = ({ styles, ...props }: StoryProps) => {
-  const [stylesheet] = React.useState(typeof styles === 'function' ? styles(stylesheetBase): styles);
+  const [stylesheet] = React.useState(typeof styles === 'function' ? styles(stylesheetBase) : styles);
 
   return (
     <div>
