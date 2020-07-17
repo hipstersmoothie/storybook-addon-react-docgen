@@ -1,3 +1,16 @@
+# v1.2.42 (Fri Jul 17 2020)
+
+#### 🐛 Bug Fix
+
+- Needed to make revisions to prevent build from breaking. [#114](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/114) ([@sandrews2](https://github.com/sandrews2))
+- Change type checking of object to use Object.is [#113](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/113) ([@sandrews2](https://github.com/sandrews2))
+
+#### Authors: 1
+
+- [@sandrews2](https://github.com/sandrews2)
+
+---
+
 # v1.2.41 (Tue Jul 07 2020)
 
 #### 🐛 Bug Fix
