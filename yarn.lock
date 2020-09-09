@@ -72,7 +72,7 @@
     tslib "1.11.1"
     url-join "^4.0.0"
 
-"@auto-it/gh-pages@^9.39.0":
+"@auto-it/gh-pages@9.39.0":
   version "9.39.0"
   resolved "https://registry.yarnpkg.com/@auto-it/gh-pages/-/gh-pages-9.39.0.tgz#60ed30158079a8ea6f4c117e44a0c3acaa6b9370"
   integrity sha512-mQ4L4yGzitnP6I0Ml4Dlq44gV0S04+XKMN7AoWAGlC4SG+j0LY2GPVGSDnH2Hqz1nzuovtPUKU/EqysAz9HFLA==
@@ -571,7 +571,7 @@
     "@babel/helper-plugin-utils" "^7.10.1"
     "@babel/plugin-syntax-optional-catch-binding" "^7.8.0"
 
-"@babel/plugin-proposal-optional-chaining@^7.10.1":
+"@babel/plugin-proposal-optional-chaining@7.10.1", "@babel/plugin-proposal-optional-chaining@^7.10.1":
   version "7.10.1"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-optional-chaining/-/plugin-proposal-optional-chaining-7.10.1.tgz#15f5d6d22708629451a91be28f8facc55b0e818c"
   integrity sha512-dqQj475q8+/avvok72CF3AOSV/SGEcH29zT5hhohqqvvZ2+boQoOr7iGldBG5YXTO2qgCgc2B3WvVLUdbeMlGA==
@@ -1187,7 +1187,7 @@
     "@babel/plugin-transform-react-jsx-source" "^7.10.1"
     "@babel/plugin-transform-react-pure-annotations" "^7.10.1"
 
-"@babel/preset-typescript@^7.1.0", "@babel/preset-typescript@^7.10.1":
+"@babel/preset-typescript@7.10.1", "@babel/preset-typescript@^7.1.0":
   version "7.10.1"
   resolved "https://registry.yarnpkg.com/@babel/preset-typescript/-/preset-typescript-7.10.1.tgz#a8d8d9035f55b7d99a2461a0bdc506582914d07e"
   integrity sha512-m6GV3y1ShiqxnyQj10600ZVOFrSSAa8HQ3qIUk2r+gcGtHTIRw0dJnFLt1WNXpKjtVw7yw1DAPU/6ma2ZvgJuA==
@@ -1662,7 +1662,7 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
   integrity sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==
 
-"@storybook/addon-actions@^5.3.19":
+"@storybook/addon-actions@5.3.19":
   version "5.3.19"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-5.3.19.tgz#50548fa6e84bc79ad95233ce23ade4878fc7cfac"
   integrity sha512-gXF29FFUgYlUoFf1DcVCmH1chg2ElaHWMmCi5h7aZe+g6fXBQw0UtEdJnYLMOqZCIiWoZyuf1ETD0RbNHPhRIw==
@@ -1682,7 +1682,7 @@
     react-inspector "^4.0.0"
     uuid "^3.3.2"
 
-"@storybook/addon-docs@^5.3.19":
+"@storybook/addon-docs@5.3.19":
   version "5.3.19"
   resolved "https://registry.yarnpkg.com/@storybook/addon-docs/-/addon-docs-5.3.19.tgz#571dce4bd24664e5b2ea3570ccc9e238c901611a"
   integrity sha512-lGI4fDkfbg7gjj0ZTGBpGKykYKRd8mcLXY3M8/sdpA1a53dNABqL6kHoR/rbVJlk5tvEUY44QeEPKH+sOCu50g==
@@ -1722,7 +1722,7 @@
     vue-docgen-api "^4.1.0"
     vue-docgen-loader "^1.3.0-beta.0"
 
-"@storybook/addon-links@^5.3.19":
+"@storybook/addon-links@5.3.19":
   version "5.3.19"
   resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-5.3.19.tgz#3c23e886d44b56978ae254fed3bf8be54c877178"
   integrity sha512-gn9u8lebREfRsyzxoDPG0O+kOf5aJ0BhzcCJGZZdqha0F6OWHhh8vJYZZvjJ/Qwze+Qt2zjrgWm+Q6+JLD8ugQ==
@@ -1738,7 +1738,7 @@
     qs "^6.6.0"
     ts-dedent "^1.1.0"
 
-"@storybook/addons@5.3.19", "@storybook/addons@^5.3.19":
+"@storybook/addons@5.3.19":
   version "5.3.19"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-5.3.19.tgz#3a7010697afd6df9a41b8c8a7351d9a06ff490a4"
   integrity sha512-Ky/k22p6i6FVNvs1VhuFyGvYJdcp+FgXqFgnPyY/OXJW/vPDapdElpTpHJZLFI9I2FQBDcygBPU5RXkumQ+KUQ==
@@ -1825,7 +1825,7 @@
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/components@5.3.19", "@storybook/components@^5.3.19":
+"@storybook/components@5.3.19":
   version "5.3.19"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-5.3.19.tgz#aac1f9eea1247cc85bd93b10fca803876fb84a6b"
   integrity sha512-3g23/+ktlocaHLJKISu9Neu3XKa6aYP2ctDYkRtGchSB0Q55hQsUVGO+BEVuT7Pk2D59mVCxboBjxcRoPUY4pw==
@@ -1852,7 +1852,7 @@
     simplebar-react "^1.0.0-alpha.6"
     ts-dedent "^1.1.0"
 
-"@storybook/core-events@5.3.19", "@storybook/core-events@^5.3.19":
+"@storybook/core-events@5.3.19":
   version "5.3.19"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-5.3.19.tgz#18020cd52e0d8ef0973a8e9622a10d5f99796f79"
   integrity sha512-lh78ySqMS7pDdMJAQAe35d1I/I4yPTqp09Cq0YIYOxx9BQZhah4DZTV1QIZt22H5p2lPb5MWLkWSxBaexZnz8A==
@@ -1964,7 +1964,7 @@
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/react@^5.3.19":
+"@storybook/react@5.3.19":
   version "5.3.19"
   resolved "https://registry.yarnpkg.com/@storybook/react/-/react-5.3.19.tgz#ad7e7a5538399e2794cdb5a1b844a2b77c10bd09"
   integrity sha512-OBRUqol3YLQi/qE55x2pWkv4YpaAmmfj6/Km+7agx+og+oNQl0nnlXy7r27X/4j3ERczzURa5pJHtSjwiNaJNw==
@@ -2330,7 +2330,7 @@
     "@types/history" "*"
     "@types/react" "*"
 
-"@types/react-dom@^16.9.8":
+"@types/react-dom@16.9.8":
   version "16.9.8"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.9.8.tgz#fe4c1e11dfc67155733dfa6aa65108b4971cb423"
   integrity sha512-ykkPQ+5nFknnlU6lDd947WbQ6TE3NNzbQAkInC2EKY1qeYdTKp7onFusmYZb+ityzx2YviqT6BXSu+LyWWJwcA==
@@ -3075,7 +3075,7 @@ author-regex@^1.0.0:
   resolved "https://registry.yarnpkg.com/author-regex/-/author-regex-1.0.0.tgz#d08885be6b9bbf9439fe087c76287245f0a81450"
   integrity sha1-0IiFvmubv5Q5/gh8dihyRfCoFFA=
 
-auto-config-hipstersmoothie@^3.0.24:
+auto-config-hipstersmoothie@3.0.24:
   version "3.0.24"
   resolved "https://registry.yarnpkg.com/auto-config-hipstersmoothie/-/auto-config-hipstersmoothie-3.0.24.tgz#a9b8e6ef01de26154ab3c4d3fa63eef1ecc0c29b"
   integrity sha512-Z2g98CblNGMGBjA98INOLWLz+LXW4Efou6bF8p997cxOdraymWiP0dGfjIS+AKsHK35yoUXWxkY+9P5wLhYS4g==
@@ -3086,7 +3086,7 @@ auto-config-hipstersmoothie@^3.0.24:
     "@auto-it/released" "9.34.1"
     all-contributors-cli "^6.14.0"
 
-auto@^9.39.0:
+auto@9.39.0:
   version "9.39.0"
   resolved "https://registry.yarnpkg.com/auto/-/auto-9.39.0.tgz#1cf174541ea1d3a7432d315fed521fd4d15154c1"
   integrity sha512-ebJXsceHcZKM3h2erTxkMnGjnypruS0xHLJEHi9GIB8+yVe/6Iwz/qeNcUelemzmJzenqv0wH+fJE2kikuQVqw==
@@ -3180,7 +3180,7 @@ babel-helper-to-multiple-sequence-expressions@^0.5.0:
   resolved "https://registry.yarnpkg.com/babel-helper-to-multiple-sequence-expressions/-/babel-helper-to-multiple-sequence-expressions-0.5.0.tgz#a3f924e3561882d42fcf48907aa98f7979a4588d"
   integrity sha512-m2CvfDW4+1qfDdsrtf4dwOslQC3yhbgyBFptncp4wvtdrDHqueW7slsYv4gArie056phvQFhT2nRcGS4bnm6mA==
 
-babel-loader@^8.1.0:
+babel-loader@8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.1.0.tgz#c611d5112bd5209abe8b9fa84c3e4da25275f1c3"
   integrity sha512-7q7nC1tYOrqvUrN3LQK4GwSk/TQorZSOlO9C+RZDZpODgyN4ZlCqE5q9cDsyWOliN+aU9B4JX01xK9eJXowJLw==
@@ -5338,14 +5338,14 @@ eslint-ast-utils@^1.1.0:
     lodash.get "^4.4.2"
     lodash.zip "^4.2.0"
 
-eslint-config-prettier@^6.11.0:
+eslint-config-prettier@6.11.0, eslint-config-prettier@^6.11.0:
   version "6.11.0"
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.11.0.tgz#f6d2238c1290d01c859a8b5c1f7d352a0b0da8b1"
   integrity sha512-oB8cpLWSAjOVFEJhhyMZh6NOEOtBVziaqdDQ86+qhDHFbZXoRTM7pNSvFRfW/W/L/LrQ38C99J5CGuRBBzBsdA==
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-xo-react@^0.23.0:
+eslint-config-xo-react@0.23.0:
   version "0.23.0"
   resolved "https://registry.yarnpkg.com/eslint-config-xo-react/-/eslint-config-xo-react-0.23.0.tgz#a6e4cfc3e1231cf9291fa19000f559dc53183090"
   integrity sha512-yBNoMF6COjJLRijlWksC1Jws6CGWHMgTfR/PAReCdZUo5cg/ZsyNeZx/fntyU4SbARwW2RvuezMeKle+jI5yoA==
@@ -5490,12 +5490,12 @@ eslint-plugin-promise@^4.2.1:
   resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-4.2.1.tgz#845fd8b2260ad8f82564c1222fce44ad71d9418a"
   integrity sha512-VoM09vT7bfA7D+upt+FjeBO5eHIJQBUWki1aPvB+vbNiHS3+oGIJGIeyBtKQTME6UPXXy3vV07OL1tHd3ANuDw==
 
-eslint-plugin-react-hooks@^4.0.4:
+eslint-plugin-react-hooks@4.0.4:
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.0.4.tgz#aed33b4254a41b045818cacb047b81e6df27fa58"
   integrity sha512-equAdEIsUETLFNCmmCkiCGq6rkSK5MoJhXFPFYeUebcjKgBmWWcgVOqZyQC8Bv1BwVCnTq9tBxgJFgAJTWoJtA==
 
-eslint-plugin-react@^7.20.0:
+eslint-plugin-react@7.20.0:
   version "7.20.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.20.0.tgz#f98712f0a5e57dfd3e5542ef0604b8739cd47be3"
   integrity sha512-rqe1abd0vxMjmbPngo4NaYxTcR3Y4Hrmc/jg4T+sYz63yqlmJRknpEQfmWY+eDWPuMmix6iUIK+mv0zExjeLgA==
@@ -5573,7 +5573,7 @@ eslint-visitor-keys@^1.1.0, eslint-visitor-keys@^1.2.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.2.0.tgz#74415ac884874495f78ec2a97349525344c981fa"
   integrity sha512-WFb4ihckKil6hu3Dp798xdzSfddwKKU3+nGniKF6HfeW6OLd2OUDEPP7TcHtB5+QXOKg2s6B2DaMPE1Nn/kxKQ==
 
-eslint@^7.1.0, eslint@^7.2.0:
+eslint@7.2.0, eslint@^7.1.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.2.0.tgz#d41b2e47804b30dbabb093a967fb283d560082e6"
   integrity sha512-B3BtEyaDKC5MlfDa2Ha8/D6DsS4fju95zs0hjS3HdGazw+LNayai38A25qMppK37wWGWNYSPOR6oYzlz5MHsRQ==
@@ -12994,7 +12994,7 @@ xdg-basedir@^4.0.0:
   resolved "https://registry.yarnpkg.com/xdg-basedir/-/xdg-basedir-4.0.0.tgz#4bc8d9984403696225ef83a1573cbbcb4e79db13"
   integrity sha512-PSNhEJDejZYV7h50BohL09Er9VaIefr2LMAf3OEmpCkjOi34eYyQYAXUTjEQtZJTKcF0E2UKTh+osDLsgNim9Q==
 
-xo@^0.32.0:
+xo@0.32.0:
   version "0.32.0"
   resolved "https://registry.yarnpkg.com/xo/-/xo-0.32.0.tgz#f3eeaec5c0a8ac8003d5d872464d9091a6bf7b7a"
   integrity sha512-PnrLzAb9vMKljc5y0tUM4MEZGtXJd8KkuYoszYQkzUyFk8ykDrrOPEDO7ZmpoGSEohNjRLusvgOUi1LJD/jQjA==
