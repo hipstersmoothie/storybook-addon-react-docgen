@@ -115,7 +115,6 @@
   "dependencies": {
     "nested-object-assign": "^1.0.3",
     "prop-types": "^15.6.2",
-    "react-addons-create-fragment": "^15.6.2",
     "react-lifecycles-compat": "^3.0.4",
     "storybook-pretty-props": "^1.2.1"
   },
