@@ -136,7 +136,12 @@
     "addon",
     "react",
     "docgen",
-    "typescript"
+    "typescript",
+    "storybook-addon",
+    "organize"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "storybook": {
+    "displayName": "React docgen"
+  }
 }
