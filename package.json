@@ -45,7 +45,7 @@
     "@storybook/components": "^5.3.19",
     "@storybook/core-events": "^5.3.19",
     "@storybook/react": "^5.3.19",
-    "@types/react-dom": "^16.9.8",
+    "@types/react-dom": "16.9.16",
     "auto": "^9.39.0",
     "auto-config-hipstersmoothie": "^3.0.24",
     "babel-core": "7.0.0-bridge.0",
