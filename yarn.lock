@@ -5345,10 +5345,10 @@ eslint-config-prettier@^6.11.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-xo-react@^0.23.0:
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-xo-react/-/eslint-config-xo-react-0.23.0.tgz#a6e4cfc3e1231cf9291fa19000f559dc53183090"
-  integrity sha512-yBNoMF6COjJLRijlWksC1Jws6CGWHMgTfR/PAReCdZUo5cg/ZsyNeZx/fntyU4SbARwW2RvuezMeKle+jI5yoA==
+eslint-config-xo-react@^0.27.0:
+  version "0.27.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-xo-react/-/eslint-config-xo-react-0.27.0.tgz#aeb7593bf3d8fb9fc7fecfcbd7240f0daddb5cb0"
+  integrity sha512-wiV215xQIn71XZyyVfaOXHaFpR1B14IJttwOjMi/eqUK1s+ojJdHr7eHqTLaGUfh6FKgWha1QNwePlIXx7mBUg==
 
 eslint-config-xo-typescript@^0.31.0:
   version "0.31.0"
