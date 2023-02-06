@@ -26,7 +26,7 @@ If you are using `@storybook/addon-docs` then you do not need to set up docgen a
 
 ### Typescript DocGen
 
-To use this plugin with a typescript project you need to install [react-docgen-typescript-loader](https://github.com/strothj/react-docgen-typescript-loader) and configure webpack to use it.
+To use this plugin with a typescript project you need to install [react-docgen-typescript-plugin](https://www.npmjs.com/package/react-docgen-typescript-plugin) and configure webpack to use it.
 
 ### Javascript DocGen
 
@@ -329,21 +329,31 @@ const Usage = () => <Card />;
 
 ### My components extends from HTML elements and there are way too many props in the panel! How do I get rid of some?
 
-You can add a filter to `react-docgen-typescript-loader` that will omit anything that comes from `@types/react`.s
+You can add a filter to `react-docgen-typescript-plugin` that will omit anything that comes from `@types/react`.
+
+`.storybook/main.js`
 
 ```js
 {
-  loader: require.resolve('react-docgen-typescript-loader'),
-  options: {
-    tsconfigPath,
-    propFilter(prop) {
-      if (prop.parent) {
-        return !prop.parent.fileName.includes('@types/react');
-      }
+    typescript: {
+        check: false,
+        reactDocgen: 'react-docgen-typescript',
+        reactDocgenTypescriptOptions: {
+            propFilter: (prop) => {
+                if (prop.name === 'children') {
+                    return true;
+                }
 
-      return true;
-    }
-  }
+                if (prop.parent) {
+                    return (
+                        !/@types\/react/.test(prop.parent.fileName) &&
+                        !/@emotion/.test(prop.parent.fileName)
+                    );
+                }
+                return true;
+            },
+        },
+    },
 }
 ```
 
