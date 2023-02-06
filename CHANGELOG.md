@@ -1,3 +1,15 @@
+# v1.2.43 (Mon Feb 06 2023)
+
+#### 🐛 Bug Fix
+
+- Update setup instructions [#138](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/138) ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+#### Authors: 1
+
+- Andrew Lisowski ([@hipstersmoothie](https://github.com/hipstersmoothie))
+
+---
+
 # v1.2.42 (Fri Jul 17 2020)
 
 #### 🐛 Bug Fix
