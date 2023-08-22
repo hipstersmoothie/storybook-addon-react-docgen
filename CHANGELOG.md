@@ -1,3 +1,19 @@
+# v1.2.44 (Tue Aug 22 2023)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Yucho Ho ([@yucho](https://github.com/yucho)), for all your work!
+
+#### 🐛 Bug Fix
+
+- fix: remove unused deprecated package [#140](https://github.com/hipstersmoothie/storybook-addon-react-docgen/pull/140) ([@yucho](https://github.com/yucho))
+
+#### Authors: 1
+
+- Yucho Ho ([@yucho](https://github.com/yucho))
+
+---
+
 # v1.2.43 (Mon Feb 06 2023)
 
 #### 🐛 Bug Fix
