@@ -47,7 +47,7 @@
     "@storybook/react": "^5.3.19",
     "@types/react-dom": "^16.9.8",
     "auto": "^9.39.0",
-    "auto-config-hipstersmoothie": "^3.0.24",
+    "auto-config-hipstersmoothie": "^4.0.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-add-module-exports": "1.0.2",
