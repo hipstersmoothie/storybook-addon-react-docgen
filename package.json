@@ -32,7 +32,7 @@
   "devDependencies": {
     "@auto-it/gh-pages": "^9.39.0",
     "@babel/cli": "7.6.2",
-    "@babel/core": "7.6.2",
+    "@babel/core": "7.29.6",
     "@babel/plugin-proposal-class-properties": "7.5.5",
     "@babel/plugin-proposal-optional-chaining": "^7.10.1",
     "@babel/preset-env": "7.6.2",
